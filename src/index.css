@@ -12,6 +12,46 @@ body {
   margin: 0;
 }
 
+/* Hide scrollbars on mobile, show on desktop */
+@media (max-width: 768px) {
+  /* Hide scrollbars on mobile */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Firefox */
+  * {
+    scrollbar-width: none;
+  }
+  
+  /* Still allow scrolling with touch */
+  html, body, div {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Show scrollbars with custom styling on desktop */
+@media (min-width: 769px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.4);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.6);
+  }
+}
+
 .glass-panel {
   @apply rounded-2xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur-xl;
 }

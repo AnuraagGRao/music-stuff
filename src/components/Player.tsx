@@ -1,7 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import * as Slider from '@radix-ui/react-slider'
-import { Pause, Play, Repeat, Shuffle, SkipBack, SkipForward, Volume2 } from 'lucide-react'
+import { Pause, Play, Repeat, Repeat1, Shuffle, SkipBack, SkipForward, Volume2 } from 'lucide-react'
 import type { Track } from '../types'
+
+type RepeatMode = 'off' | 'one' | 'all'
 
 type PlayerProps = {
   track: Track
@@ -17,6 +19,8 @@ type PlayerProps = {
   currentTime: number
   duration: number
   accentColor: string
+  shuffled?: boolean
+  repeatMode?: RepeatMode
 }
 
 const formatTime = (seconds: number) => {
@@ -37,24 +41,38 @@ function PlayerControls({
   volume,
   currentTime,
   duration,
+  shuffled = false,
+  repeatMode = 'off',
 }: Omit<PlayerProps, 'track' | 'accentColor'>) {
   return (
     <>
       <div className="flex items-center gap-2">
-        <button type="button" onClick={onShuffle} className="rounded-md p-2 hover:bg-white/10">
+        <button
+          type="button"
+          onClick={onShuffle}
+          className={`rounded-md p-2 transition-colors ${shuffled ? 'bg-indigo-500 text-white hover:bg-indigo-400' : 'hover:bg-white/10'}`}
+          title={shuffled ? 'Shuffle ON' : 'Shuffle OFF'}
+        >
           <Shuffle className="size-4" />
         </button>
-        <button type="button" onClick={onPrevious} className="rounded-md p-2 hover:bg-white/10">
+        <button type="button" onClick={onPrevious} className="rounded-md p-2 hover:bg-white/10" title="Previous">
           <SkipBack className="size-4" />
         </button>
-        <button type="button" onClick={onTogglePlay} className="rounded-full bg-white/20 p-3 hover:bg-white/30">
+        <button type="button" onClick={onTogglePlay} className="rounded-full bg-white/20 p-3 hover:bg-white/30" title={isPlaying ? 'Pause' : 'Play'}>
           {isPlaying ? <Pause className="size-5" /> : <Play className="size-5" />}
         </button>
-        <button type="button" onClick={onNext} className="rounded-md p-2 hover:bg-white/10">
+        <button type="button" onClick={onNext} className="rounded-md p-2 hover:bg-white/10" title="Next">
           <SkipForward className="size-4" />
         </button>
-        <button type="button" onClick={onRepeat} className="rounded-md p-2 hover:bg-white/10">
-          <Repeat className="size-4" />
+        <button
+          type="button"
+          onClick={onRepeat}
+          className={`rounded-md p-2 transition-colors ${
+            repeatMode === 'off' ? 'hover:bg-white/10' : 'bg-indigo-500 text-white hover:bg-indigo-400'
+          }`}
+          title={repeatMode === 'off' ? 'Repeat OFF' : repeatMode === 'all' ? 'Repeat ALL' : 'Repeat ONE'}
+        >
+          {repeatMode === 'one' ? <Repeat1 className="size-4" /> : <Repeat className="size-4" />}
         </button>
       </div>
 
@@ -63,7 +81,7 @@ function PlayerControls({
           className="relative flex h-5 w-full touch-none select-none items-center"
           value={[currentTime]}
           max={duration || 1}
-          step={1}
+          step={0.1}
           onValueChange={(value) => onSeek(value[0])}
         >
           <Slider.Track className="relative h-1 grow rounded-full bg-white/20">
@@ -97,17 +115,32 @@ function PlayerControls({
   )
 }
 
-export function Player({ track, accentColor, ...rest }: PlayerProps) {
+export function Player({
+  track,
+  accentColor,
+  shuffled = false,
+  repeatMode = 'off',
+  ...rest
+}: PlayerProps) {
+  const hasLyrics = track.lyrics && track.lyrics.length > 0
+
   return (
     <>
       <div className="glass-panel fixed inset-x-0 bottom-0 z-20 hidden items-center gap-4 border-t border-white/20 px-4 py-3 md:flex">
         <img src={track.coverUrl} alt={track.title} className="size-12 rounded-md object-cover" />
         <div className="min-w-0 w-44">
-          <p className="truncate text-sm font-medium text-white">{track.title}</p>
+          <div className="flex items-center gap-2">
+            <p className="truncate text-sm font-medium text-white">{track.title}</p>
+            {!hasLyrics && (
+              <span className="inline-block whitespace-nowrap rounded-full bg-amber-500/20 px-1.5 py-0.5 text-xs font-semibold text-amber-300 border border-amber-500/30">
+                Instrumental
+              </span>
+            )}
+          </div>
           <p className="truncate text-xs text-slate-300">{track.artist}</p>
         </div>
         <div className="flex-1">
-          <PlayerControls {...rest} />
+          <PlayerControls {...rest} shuffled={shuffled} repeatMode={repeatMode} />
         </div>
       </div>
 
@@ -120,7 +153,14 @@ export function Player({ track, accentColor, ...rest }: PlayerProps) {
           >
             <img src={track.coverUrl} alt={track.title} className="size-12 rounded-md object-cover" />
             <div className="min-w-0">
-              <p className="truncate text-sm text-white">{track.title}</p>
+              <div className="flex items-center gap-2">
+                <p className="truncate text-sm text-white">{track.title}</p>
+                {!hasLyrics && (
+                  <span className="inline-block whitespace-nowrap rounded-full bg-amber-500/20 px-1.5 py-0.5 text-xs font-semibold text-amber-300 border border-amber-500/30">
+                    Instrumental
+                  </span>
+                )}
+              </div>
               <p className="truncate text-xs text-slate-300">Tap to expand player</p>
             </div>
           </button>
@@ -129,10 +169,17 @@ export function Player({ track, accentColor, ...rest }: PlayerProps) {
           <Dialog.Overlay className="fixed inset-0 z-30 bg-black/60" />
           <Dialog.Content className="fixed inset-x-0 bottom-0 z-40 rounded-t-3xl border border-white/10 bg-slate-950 p-6 text-white">
             <img src={track.coverUrl} alt={track.title} className="mx-auto mb-4 size-48 rounded-2xl object-cover" />
-            <p className="text-center text-lg font-semibold">{track.title}</p>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <p className="text-center text-lg font-semibold">{track.title}</p>
+              {!hasLyrics && (
+                <span className="inline-block whitespace-nowrap rounded-full bg-amber-500/20 px-2 py-1 text-xs font-semibold text-amber-300 border border-amber-500/30">
+                  Instrumental
+                </span>
+              )}
+            </div>
             <p className="mb-5 text-center text-sm text-slate-300">{track.artist}</p>
             <div className="space-y-4">
-              <PlayerControls {...rest} />
+              <PlayerControls {...rest} shuffled={shuffled} repeatMode={repeatMode} />
             </div>
           </Dialog.Content>
         </Dialog.Portal>
