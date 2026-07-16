@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Search } from 'lucide-react'
 import { LyricsView } from './components/LyricsView'
 import { Player } from './components/Player'
@@ -17,7 +17,6 @@ import { useSeedDatabase } from './hooks/useSeedDatabase'
 import { useLoadManifest } from './hooks/useLoadManifest'
 import { useLyricsExtraction } from './hooks/useLyricsExtraction'
 import { useTheme } from './hooks/useTheme'
-import { themeManager } from './themes/manager'
 
 function App() {
   const { theme } = useTheme()
