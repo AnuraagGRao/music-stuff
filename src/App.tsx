@@ -100,6 +100,13 @@ function App() {
               </div>
               <div className="flex items-center gap-2">
                 <ThemeSwitcher />
+                <a
+                  href="https://anuraaggrao.com/"
+                  className="text-xs text-slate-400 hover:text-slate-300 transition-colors"
+                  title="Back to portfolio"
+                >
+                  Portfolio
+                </a>
                 <button
                   type="button"
                   className="rounded-lg bg-indigo-500 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-400"
