@@ -221,5 +221,8 @@ export function useAudioPlayer() {
     repeatMode,
     toggleShuffle,
     cycleRepeat,
+    
+    // Audio element
+    audioElement: audioRef.current,
   }
 }

@@ -60,6 +60,7 @@ function App() {
     accentColor,
     playTrack,
     seek,
+    audioElement,
   } = useAudioPlayer()
 
   const filteredTracks = tracks.filter((track) => {
@@ -197,6 +198,7 @@ function App() {
             setVolume={setVolume}
             accentColor={accentColor}
             seek={seek}
+            audioElement={audioElement}
           />
         )}
 

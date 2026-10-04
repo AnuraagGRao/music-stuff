@@ -4,6 +4,7 @@ import * as Slider from '@radix-ui/react-slider'
 import { useAudioStore } from '../store/audioStore'
 import { LyricsView } from './LyricsView'
 import { isInstrumentalTrack } from '../lib/lyricsUtils'
+import { AudioVisualizer } from './AudioVisualizer'
 
 interface FullPlayerProps {
   onClose: () => void
@@ -15,6 +16,7 @@ interface FullPlayerProps {
   setVolume: (volume: number) => void
   accentColor: string
   seek: (time: number) => void
+  audioElement: HTMLAudioElement | null
 }
 
 const formatTime = (seconds: number) => {
@@ -33,6 +35,7 @@ export function FullPlayer({
   setVolume,
   accentColor,
   seek,
+  audioElement,
 }: FullPlayerProps) {
   const { currentTrackId, tracks, playNext, playPrevious, toggleShuffle, cycleRepeat, shuffled, repeatMode } = useAudioStore()
 
@@ -108,6 +111,17 @@ export function FullPlayer({
             </div>
             <p className="text-gray-300 text-lg break-words">{currentTrack.artist}</p>
             <p className="text-gray-500 text-sm mt-2">{currentTrack.album}</p>
+          </div>
+
+          {/* Audio Visualizer */}
+          <div className="w-full max-w-xs mb-8">
+            <AudioVisualizer
+              audioElement={audioElement}
+              isPlaying={isPlaying}
+              height={60}
+              barCount={40}
+              barColor={accentColor || 'rgba(139, 92, 246, 0.8)'}
+            />
           </div>
 
           {/* Timeline */}
