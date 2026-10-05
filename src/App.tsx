@@ -1,9 +1,12 @@
 import { useState, useEffect, useMemo } from 'react'
-import { Search, X, AlertTriangle, Disc3, Heart, Cloud, LogIn, LogOut } from 'lucide-react'
+import { Search, X, AlertTriangle, Disc3, Heart, Cloud, LogIn, LogOut, Command } from 'lucide-react'
 import { LyricsView } from './components/LyricsView'
 import { Player } from './components/Player'
 import { FullPlayer } from './components/FullPlayer'
 import { Queue } from './components/Queue'
+import { QueueDrawer } from './components/QueueDrawer'
+import { SleepTimerModal } from './components/SleepTimerModal'
+import { KeyboardShortcutsModal } from './components/KeyboardShortcutsModal'
 import { Sidebar } from './components/Sidebar'
 import { TrackRow } from './components/TrackRow'
 import { UploadZone } from './components/UploadZone'
@@ -40,6 +43,8 @@ function App() {
     cycleRepeat,
     shuffled,
     repeatMode,
+    isQueueOpen,
+    setIsQueueOpen,
   } = useAudioStore()
 
   const {
@@ -61,6 +66,8 @@ function App() {
   const [activeNav, setActiveNav] = useState<'library' | 'favorites' | 'uploads'>('library')
   const [createPlaylistOpen, setCreatePlaylistOpen] = useState(false)
   const [fullscreenPlayer, setFullscreenPlayer] = useState(false)
+  const [sleepTimerOpen, setSleepTimerOpen] = useState(false)
+  const [shortcutsOpen, setShortcutsOpen] = useState(false)
 
   const {
     currentTrack,
@@ -106,6 +113,23 @@ function App() {
     }
   }
 
+  // Deep linking URL hash #track={id}
+  useEffect(() => {
+    const checkHashTrack = () => {
+      const match = window.location.hash.match(/#track=([^&]+)/)
+      if (match && match[1]) {
+        const targetId = decodeURIComponent(match[1])
+        const found = tracks.find((t) => t.id === targetId)
+        if (found) {
+          playTrack(found.id)
+        }
+      }
+    }
+    checkHashTrack()
+    window.addEventListener('hashchange', checkHashTrack)
+    return () => window.removeEventListener('hashchange', checkHashTrack)
+  }, [tracks, playTrack])
+
   // Keyboard hotkeys
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -138,12 +162,35 @@ function App() {
       } else if (e.key === 'f' || e.key === 'F') {
         e.preventDefault()
         setFullscreenPlayer((prev) => !prev)
+      } else if (e.key === 'q' || e.key === 'Q') {
+        e.preventDefault()
+        setIsQueueOpen(!isQueueOpen)
+      } else if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+        e.preventDefault()
+        setShortcutsOpen((prev) => !prev)
+      } else if (e.key === 'Escape') {
+        setFullscreenPlayer(false)
+        setIsQueueOpen(false)
+        setSleepTimerOpen(false)
+        setShortcutsOpen(false)
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isPlaying, setIsPlaying, currentTime, duration, seek, playPrevious, playNext, volume, setVolume])
+  }, [
+    isPlaying,
+    setIsPlaying,
+    currentTime,
+    duration,
+    seek,
+    playPrevious,
+    playNext,
+    volume,
+    setVolume,
+    isQueueOpen,
+    setIsQueueOpen,
+  ])
 
   try {
     if (!currentTrack) {
@@ -215,6 +262,16 @@ function App() {
                 </a>
 
                 {/* Google Sign In / Profile Pill */}
+                <button
+                  type="button"
+                  onClick={() => setShortcutsOpen(true)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] text-xs font-mono font-medium text-slate-400 hover:text-white transition cursor-pointer"
+                  title="Keyboard Shortcuts (?)"
+                >
+                  <Command className="size-3.5" />
+                  <span className="hidden sm:inline">Shortcuts</span>
+                </button>
+
                 {isAuthenticated && user ? (
                   <div className="flex items-center gap-2 pl-1">
                     <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-mono text-white">
@@ -474,6 +531,7 @@ function App() {
           shuffled={shuffled}
           repeatMode={repeatMode}
           onExpand={() => setFullscreenPlayer(true)}
+          onOpenSleepTimer={() => setSleepTimerOpen(true)}
         />
 
         {/* Fullscreen Player Modal */}
@@ -491,6 +549,25 @@ function App() {
             audioElement={audioElement}
           />
         )}
+
+        {/* Play Queue Drawer */}
+        <QueueDrawer
+          isOpen={isQueueOpen}
+          onClose={() => setIsQueueOpen(false)}
+          onPlayTrack={playTrack}
+        />
+
+        {/* Sleep Timer Modal */}
+        <SleepTimerModal
+          isOpen={sleepTimerOpen}
+          onClose={() => setSleepTimerOpen(false)}
+        />
+
+        {/* Keyboard Shortcuts Modal */}
+        <KeyboardShortcutsModal
+          isOpen={shortcutsOpen}
+          onClose={() => setShortcutsOpen(false)}
+        />
 
         <CreatePlaylistModal open={createPlaylistOpen} onOpenChange={setCreatePlaylistOpen} />
       </div>

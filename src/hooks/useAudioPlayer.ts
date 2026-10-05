@@ -30,6 +30,18 @@ export function useAudioPlayer() {
     setIsPlaying,
     currentTime,
     setCurrentTime,
+    playbackRate,
+    setPlaybackRate,
+    sleepTimerMinutes,
+    sleepTimerExpiresAt,
+    isSleepTimerEndOfTrack,
+    setSleepTimer,
+    isQueueOpen,
+    setIsQueueOpen,
+    addToQueue,
+    playNextInQueue,
+    removeFromQueue,
+    clearQueue,
   } = useAudioStore()
 
   const currentTrack = useMemo(
@@ -42,6 +54,26 @@ export function useAudioPlayer() {
     const audio = audioRef.current
     audio.volume = Math.max(0, Math.min(1, volume))
   }, [volume])
+
+  // Sync playback rate to audio element
+  useEffect(() => {
+    const audio = audioRef.current
+    if (audio) {
+      audio.playbackRate = playbackRate
+    }
+  }, [playbackRate])
+
+  // Sleep timer interval
+  useEffect(() => {
+    if (!sleepTimerExpiresAt) return
+    const interval = setInterval(() => {
+      if (Date.now() >= sleepTimerExpiresAt) {
+        setIsPlaying(false)
+        setSleepTimer(null)
+      }
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [sleepTimerExpiresAt, setIsPlaying, setSleepTimer])
 
   // Load track when it changes (separate from playback)
   useEffect(() => {
@@ -149,6 +181,11 @@ export function useAudioPlayer() {
       lastReportedTime = 0
       setCurrentTime(0)
       if (rafId !== null) cancelAnimationFrame(rafId)
+      if (isSleepTimerEndOfTrack) {
+        setIsPlaying(false)
+        setSleepTimer(null)
+        return
+      }
       if (repeatMode === 'one') {
         audio.currentTime = 0
         audio.play().catch(console.error)
@@ -231,6 +268,20 @@ export function useAudioPlayer() {
     repeatMode,
     toggleShuffle,
     cycleRepeat,
+    isQueueOpen,
+    setIsQueueOpen,
+    addToQueue,
+    playNextInQueue,
+    removeFromQueue,
+    clearQueue,
+
+    // Speed & Timer
+    playbackRate,
+    setPlaybackRate,
+    sleepTimerMinutes,
+    sleepTimerExpiresAt,
+    isSleepTimerEndOfTrack,
+    setSleepTimer,
     
     // Audio element
     audioElement: audioRef.current,

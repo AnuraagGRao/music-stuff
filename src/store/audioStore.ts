@@ -21,6 +21,11 @@ type AudioState = {
   volume: number
   isPlaying: boolean
   currentTime: number
+  playbackRate: number
+  sleepTimerMinutes: number | null
+  sleepTimerExpiresAt: number | null
+  isSleepTimerEndOfTrack: boolean
+  isQueueOpen: boolean
   
   // Actions
   setTracks: (tracks: Track[]) => void
@@ -35,6 +40,13 @@ type AudioState = {
   setIsPlaying: (isPlaying: boolean) => void
   setCurrentTime: (time: number) => void
   addTrack: (track: Track) => void
+  addToQueue: (trackId: string) => void
+  playNextInQueue: (trackId: string) => void
+  removeFromQueue: (trackId: string) => void
+  clearQueue: () => void
+  setPlaybackRate: (rate: number) => void
+  setSleepTimer: (minutes: number | null, isEndOfTrack?: boolean) => void
+  setIsQueueOpen: (isOpen: boolean) => void
 }
 
 const uniquePush = (items: string[], id: string) => [id, ...items.filter((item) => item !== id)].slice(0, 20)
@@ -61,6 +73,11 @@ export const useAudioStore = create<AudioState>()(
       volume: 0.8,
       isPlaying: false,
       currentTime: 0,
+      playbackRate: 1.0,
+      sleepTimerMinutes: null,
+      sleepTimerExpiresAt: null,
+      isSleepTimerEndOfTrack: false,
+      isQueueOpen: false,
       
       setTracks: (tracks) => {
         const newQueue = tracks.map((track) => track.id)
@@ -178,6 +195,44 @@ export const useAudioStore = create<AudioState>()(
   setIsPlaying: (isPlaying) => set({ isPlaying }),
   
   setCurrentTime: (currentTime) => set({ currentTime }),
+
+  addToQueue: (trackId) =>
+    set((state) => ({
+      queue: state.queue.includes(trackId) ? state.queue : [...state.queue, trackId],
+    })),
+
+  playNextInQueue: (trackId) =>
+    set((state) => {
+      const withoutTrack = state.queue.filter((id) => id !== trackId)
+      const currentIndex = withoutTrack.indexOf(state.currentTrackId || '')
+      if (currentIndex === -1) {
+        return { queue: [trackId, ...withoutTrack] }
+      }
+      const updated = [...withoutTrack]
+      updated.splice(currentIndex + 1, 0, trackId)
+      return { queue: updated }
+    }),
+
+  removeFromQueue: (trackId) =>
+    set((state) => ({
+      queue: state.queue.filter((id) => id !== trackId),
+    })),
+
+  clearQueue: () =>
+    set((state) => ({
+      queue: state.currentTrackId ? [state.currentTrackId] : [],
+    })),
+
+  setPlaybackRate: (playbackRate) => set({ playbackRate }),
+
+  setSleepTimer: (minutes, isEndOfTrack = false) =>
+    set({
+      sleepTimerMinutes: minutes,
+      isSleepTimerEndOfTrack: isEndOfTrack,
+      sleepTimerExpiresAt: minutes ? Date.now() + minutes * 60 * 1000 : null,
+    }),
+
+  setIsQueueOpen: (isQueueOpen) => set({ isQueueOpen }),
 }),
     {
       name: 'music-stuff-storage',
@@ -187,6 +242,7 @@ export const useAudioStore = create<AudioState>()(
         volume: state.volume,
         repeatMode: state.repeatMode,
         shuffled: state.shuffled,
+        playbackRate: state.playbackRate,
       }),
     }
   )
