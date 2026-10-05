@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { Search, X, AlertTriangle, Disc3, Heart, Cloud, LogIn, LogOut, Command } from 'lucide-react'
+import { Search, X, AlertTriangle, Disc3, Heart, Cloud, LogIn, LogOut, Command, Zap } from 'lucide-react'
 import { LyricsView } from './components/LyricsView'
 import { Player } from './components/Player'
 import { FullPlayer } from './components/FullPlayer'
@@ -12,6 +12,7 @@ import { TrackRow } from './components/TrackRow'
 import { UploadZone } from './components/UploadZone'
 import { ForYou } from './components/ForYou'
 import { CreatePlaylistModal } from './components/CreatePlaylistModal'
+import { UpgradeModal } from './components/UpgradeModal'
 import { ThemeSwitcher } from './components/ThemeSwitcher'
 import { useAudioPlayer } from './hooks/useAudioPlayer'
 import { useFirebaseMusic } from './hooks/useFirebaseMusic'
@@ -45,6 +46,7 @@ function App() {
     repeatMode,
     isQueueOpen,
     setIsQueueOpen,
+    userPlan,
   } = useAudioStore()
 
   const {
@@ -68,6 +70,7 @@ function App() {
   const [fullscreenPlayer, setFullscreenPlayer] = useState(false)
   const [sleepTimerOpen, setSleepTimerOpen] = useState(false)
   const [shortcutsOpen, setShortcutsOpen] = useState(false)
+  const [upgradeOpen, setUpgradeOpen] = useState(false)
 
   const {
     currentTrack,
@@ -225,6 +228,7 @@ function App() {
             onLogout={logout}
             favoritesCount={favorites.length}
             uploadsCount={userTracks.length}
+            onUpgradeClick={() => setUpgradeOpen(true)}
           />
 
           <main className="flex-1 space-y-4 min-w-0">
@@ -261,7 +265,6 @@ function App() {
                   Portfolio
                 </a>
 
-                {/* Google Sign In / Profile Pill */}
                 <button
                   type="button"
                   onClick={() => setShortcutsOpen(true)}
@@ -270,6 +273,21 @@ function App() {
                 >
                   <Command className="size-3.5" />
                   <span className="hidden sm:inline">Shortcuts</span>
+                </button>
+
+                {/* Storage Plan Pill */}
+                <button
+                  type="button"
+                  onClick={() => setUpgradeOpen(true)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer ${
+                    userPlan === 'pro'
+                      ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 shadow-sm shadow-emerald-500/20 font-semibold'
+                      : 'bg-white/[0.04] border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10'
+                  }`}
+                  title="Aura Cloud Subscription & Storage Quota"
+                >
+                  <Zap className="size-3.5 text-emerald-400 fill-emerald-400" />
+                  <span>{userPlan === 'pro' ? 'Aura Pro' : 'Storage / Upgrade'}</span>
                 </button>
 
                 {isAuthenticated && user ? (
@@ -469,7 +487,13 @@ function App() {
             {/* Bottom Section: Uploads & Lyrics */}
             <section className="grid gap-4 lg:grid-cols-2">
               {isAuthenticated ? (
-                <UploadZone onUpload={uploadTrack} isUploading={isUploading} progress={uploadProgress} />
+                <UploadZone
+                  onUpload={uploadTrack}
+                  isUploading={isUploading}
+                  progress={uploadProgress}
+                  userTracksCount={userTracks.length}
+                  onUpgradeClick={() => setUpgradeOpen(true)}
+                />
               ) : (
                 <div className="rounded-2xl border border-white/[0.08] bg-[#0c0d10]/90 backdrop-blur-xl p-6 flex flex-col items-center justify-center text-center gap-3">
                   <div className="size-12 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-slate-400">
@@ -567,6 +591,12 @@ function App() {
         <KeyboardShortcutsModal
           isOpen={shortcutsOpen}
           onClose={() => setShortcutsOpen(false)}
+        />
+
+        {/* Upgrade / Subscription Modal */}
+        <UpgradeModal
+          isOpen={upgradeOpen}
+          onClose={() => setUpgradeOpen(false)}
         />
 
         <CreatePlaylistModal open={createPlaylistOpen} onOpenChange={setCreatePlaylistOpen} />

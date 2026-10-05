@@ -1,0 +1,212 @@
+import React from 'react'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { useAudioStore } from '../store/audioStore'
+import { UploadZone } from '../components/UploadZone'
+import { UpgradeModal } from '../components/UpgradeModal'
+import { PLAN_LIMITS, formatBytes, getPlanLimits } from '../utils/planLimits'
+
+describe('Subscription Model & Plan Limits', () => {
+  beforeEach(() => {
+    useAudioStore.setState({
+      userPlan: 'free',
+    })
+  })
+
+  describe('Plan Limits Configuration', () => {
+    it('should have correct limits for Free tier', () => {
+      const free = getPlanLimits('free')
+      expect(free.maxFileSizeBytes).toBe(15 * 1024 * 1024)
+      expect(free.maxTracks).toBe(5)
+      expect(free.formattedFileSize).toBe('15 MB')
+      expect(free.monthlyPrice).toBe('$0')
+    })
+
+    it('should have correct limits for Pro tier', () => {
+      const pro = getPlanLimits('pro')
+      expect(pro.maxFileSizeBytes).toBe(100 * 1024 * 1024)
+      expect(pro.maxTracks).toBe(Infinity)
+      expect(pro.formattedFileSize).toBe('100 MB')
+      expect(pro.monthlyPrice).toBe('$4.99/mo')
+    })
+
+    it('should format bytes properly', () => {
+      expect(formatBytes(0)).toBe('0 B')
+      expect(formatBytes(1024)).toBe('1 KB')
+      expect(formatBytes(15 * 1024 * 1024)).toBe('15 MB')
+      expect(formatBytes(100 * 1024 * 1024)).toBe('100 MB')
+    })
+  })
+
+  describe('Audio Store Plan State', () => {
+    it('should default to free plan', () => {
+      const state = useAudioStore.getState()
+      expect(state.userPlan).toBe('free')
+    })
+
+    it('should update to pro plan via setUserPlan', () => {
+      const store = useAudioStore.getState()
+      store.setUserPlan('pro')
+      expect(useAudioStore.getState().userPlan).toBe('pro')
+    })
+
+    it('should revert back to free plan', () => {
+      const store = useAudioStore.getState()
+      store.setUserPlan('pro')
+      expect(useAudioStore.getState().userPlan).toBe('pro')
+
+      store.setUserPlan('free')
+      expect(useAudioStore.getState().userPlan).toBe('free')
+    })
+  })
+
+  describe('UploadZone Component Quota & Size Limit', () => {
+    it('should render Free plan limit badge and storage quota', () => {
+      useAudioStore.setState({ userPlan: 'free' })
+      render(
+        <UploadZone
+          onUpload={vi.fn()}
+          isUploading={false}
+          progress={{}}
+          userTracksCount={2}
+          onUpgradeClick={vi.fn()}
+        />
+      )
+
+      expect(screen.getByText(/Free: 15MB limit/i)).toBeInTheDocument()
+      expect(screen.getByText(/2/i)).toBeInTheDocument()
+      expect(screen.getByText(/\/ 5 tracks used/i)).toBeInTheDocument()
+    })
+
+    it('should block file upload larger than 15MB on Free tier and offer upgrade', async () => {
+      useAudioStore.setState({ userPlan: 'free' })
+      const onUpload = vi.fn()
+      const onUpgradeClick = vi.fn()
+
+      const { container } = render(
+        <UploadZone
+          onUpload={onUpload}
+          isUploading={false}
+          progress={{}}
+          userTracksCount={1}
+          onUpgradeClick={onUpgradeClick}
+        />
+      )
+
+      const fileInput = container.querySelector('input[type="file"]') as HTMLInputElement
+      expect(fileInput).toBeInTheDocument()
+
+      // Create a simulated 20MB file
+      const oversizedFile = new File([''], 'heavy-track.mp3', { type: 'audio/mpeg' })
+      Object.defineProperty(oversizedFile, 'size', { value: 20 * 1024 * 1024 })
+
+      fireEvent.change(fileInput, { target: { files: [oversizedFile] } })
+
+      await waitFor(() => {
+        expect(screen.getByText(/Free tier limit is 15 MB/i)).toBeInTheDocument()
+      })
+      expect(onUpload).not.toHaveBeenCalled()
+
+      // Test upgrade button click
+      const upgradeBtns = screen.getAllByRole('button', { name: /upgrade to pro/i })
+      expect(upgradeBtns.length).toBeGreaterThanOrEqual(1)
+      fireEvent.click(upgradeBtns[0])
+      expect(onUpgradeClick).toHaveBeenCalled()
+    })
+
+    it('should block uploads when Free track limit of 5 is reached', async () => {
+      useAudioStore.setState({ userPlan: 'free' })
+      const onUpload = vi.fn()
+      const onUpgradeClick = vi.fn()
+
+      render(
+        <UploadZone
+          onUpload={onUpload}
+          isUploading={false}
+          progress={{}}
+          userTracksCount={5}
+          onUpgradeClick={onUpgradeClick}
+        />
+      )
+
+      expect(screen.getByText(/Storage limit reached \(5\/5 tracks\)/i)).toBeInTheDocument()
+    })
+
+    it('should allow up to 100MB files when user is on Pro tier', async () => {
+      useAudioStore.setState({ userPlan: 'pro' })
+      const onUpload = vi.fn().mockResolvedValue('track-id-123')
+
+      const { container } = render(
+        <UploadZone
+          onUpload={onUpload}
+          isUploading={false}
+          progress={{}}
+          userTracksCount={12}
+        />
+      )
+
+      expect(screen.getByText(/AURA PRO • 100MB UNLIMITED/i)).toBeInTheDocument()
+
+      const fileInput = container.querySelector('input[type="file"]') as HTMLInputElement
+      // Create a 50MB file (which would fail free tier, but should succeed on Pro)
+      const proTrack = new File([''], 'studio-master.wav', { type: 'audio/wav' })
+      Object.defineProperty(proTrack, 'size', { value: 50 * 1024 * 1024 })
+
+      fireEvent.change(fileInput, { target: { files: [proTrack] } })
+
+      await waitFor(() => {
+        expect(onUpload).toHaveBeenCalledWith(proTrack)
+      })
+    })
+  })
+
+  describe('UpgradeModal Component', () => {
+    it('should render modal with plan pricing and comparison', () => {
+      render(<UpgradeModal isOpen={true} onClose={vi.fn()} />)
+
+      expect(screen.getByText(/Expand Your Studio Storage/i)).toBeInTheDocument()
+      expect(screen.getByText(/Free Starter/i)).toBeInTheDocument()
+      expect(screen.getAllByText(/Aura Pro/i).length).toBeGreaterThanOrEqual(1)
+      expect(screen.getByText(/Plan Specification Comparison/i)).toBeInTheDocument()
+    })
+
+    it('should switch between monthly and annual billing', () => {
+      render(<UpgradeModal isOpen={true} onClose={vi.fn()} />)
+
+      const monthlyBtn = screen.getByRole('button', { name: /^monthly$/i })
+      fireEvent.click(monthlyBtn)
+
+      expect(screen.getByText(/\$4.99/i)).toBeInTheDocument()
+
+      const annualBtn = screen.getByRole('button', { name: /annual/i })
+      fireEvent.click(annualBtn)
+
+      expect(screen.getByText(/\$3.25/i)).toBeInTheDocument()
+    })
+
+    it('should upgrade to Pro upon clicking upgrade button', async () => {
+      useAudioStore.setState({ userPlan: 'free' })
+      render(<UpgradeModal isOpen={true} onClose={vi.fn()} />)
+
+      const upgradeBtn = screen.getByRole('button', { name: /upgrade to aura pro/i })
+      fireEvent.click(upgradeBtn)
+
+      await waitFor(
+        () => {
+          expect(useAudioStore.getState().userPlan).toBe('pro')
+        },
+        { timeout: 1500 }
+      )
+    })
+
+    it('should call onClose when close button is clicked', () => {
+      const onClose = vi.fn()
+      render(<UpgradeModal isOpen={true} onClose={onClose} />)
+
+      const closeBtn = screen.getByRole('button', { name: /close upgrade dialog/i })
+      fireEvent.click(closeBtn)
+
+      expect(onClose).toHaveBeenCalled()
+    })
+  })
+})

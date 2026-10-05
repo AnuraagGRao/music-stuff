@@ -1,3 +1,5 @@
+export type UserPlan = 'free' | 'pro'
+
 export type LyricLine = {
   time: number
   text: string

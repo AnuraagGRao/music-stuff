@@ -1,5 +1,6 @@
-import { Heart, Library, Music2, Upload, Plus, LogOut, Disc3 } from 'lucide-react'
+import { Heart, Library, Music2, Upload, Plus, LogOut, Disc3, Zap, Crown } from 'lucide-react'
 import { usePlaylists } from '../hooks/usePlaylists'
+import { useAudioStore } from '../store/audioStore'
 import type { User } from 'firebase/auth'
 
 type SidebarProps = {
@@ -13,6 +14,7 @@ type SidebarProps = {
   onLogout?: () => void
   favoritesCount?: number
   uploadsCount?: number
+  onUpgradeClick?: () => void
 }
 
 export function Sidebar({
@@ -26,8 +28,10 @@ export function Sidebar({
   onLogout,
   favoritesCount = 0,
   uploadsCount = 0,
+  onUpgradeClick,
 }: SidebarProps) {
   const { playlists } = usePlaylists()
+  const { userPlan } = useAudioStore()
 
   const navItems = [
     { id: 'library' as const, label: 'Library', icon: Library, count: undefined },
@@ -132,6 +136,62 @@ export function Sidebar({
 
       {/* User Profile / Auth Footer */}
       <div className="border-t border-white/[0.08] pt-4 mt-auto">
+        {/* Subscription Plan Card */}
+        {isAuthenticated && (
+          <div className="mb-3">
+            {userPlan === 'free' ? (
+              <div className="rounded-xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/10 via-emerald-950/20 to-black p-3 space-y-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-white">
+                    <Zap className="size-3.5 text-emerald-400" />
+                    <span>Free Storage</span>
+                  </div>
+                  <span className="text-[0.65rem] font-mono text-slate-400">15MB / 5 Tracks</span>
+                </div>
+                <p className="text-[0.7rem] text-slate-400 leading-snug">
+                  Need more space? Unlock 100MB lossless audio & unlimited storage.
+                </p>
+                {onUpgradeClick && (
+                  <button
+                    type="button"
+                    onClick={onUpgradeClick}
+                    className="w-full py-1.5 px-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-bold transition shadow-sm cursor-pointer text-center flex items-center justify-center gap-1"
+                  >
+                    <Zap className="size-3 fill-black" />
+                    <span>Upgrade to Pro • $4.99</span>
+                  </button>
+                )}
+              </div>
+            ) : (
+              <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-2.5 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="size-7 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                    <Crown className="size-4" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-white flex items-center gap-1">
+                      <span>Aura Pro</span>
+                      <span className="text-[0.6rem] font-mono text-emerald-300 bg-emerald-400/20 px-1 py-0.2 rounded font-bold">
+                        ACTIVE
+                      </span>
+                    </div>
+                    <p className="text-[0.65rem] text-slate-400">Unlimited Cloud Audio</p>
+                  </div>
+                </div>
+                {onUpgradeClick && (
+                  <button
+                    type="button"
+                    onClick={onUpgradeClick}
+                    className="text-[0.7rem] text-emerald-400 hover:text-emerald-300 font-semibold underline underline-offset-2 cursor-pointer"
+                  >
+                    Manage
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
         {isAuthenticated && user ? (
           <div className="flex items-center justify-between gap-2 p-2 rounded-xl bg-white/[0.04] border border-white/[0.06]">
             <div className="flex items-center gap-2.5 min-w-0">
@@ -147,9 +207,14 @@ export function Sidebar({
                 </div>
               )}
               <div className="min-w-0">
-                <p className="text-xs font-semibold text-white truncate">
-                  {user.displayName || 'Logged in'}
-                </p>
+                <div className="flex items-center gap-1">
+                  <p className="text-xs font-semibold text-white truncate">
+                    {user.displayName || 'Logged in'}
+                  </p>
+                  {userPlan === 'pro' && (
+                    <span className="text-[0.6rem] font-bold text-emerald-400 font-mono">⚡PRO</span>
+                  )}
+                </div>
                 <p className="text-[0.65rem] text-slate-400 font-mono truncate">
                   {user.email || 'Cloud sync active'}
                 </p>

@@ -20,6 +20,7 @@ import {
 import { getDownloadURL, ref, uploadBytesResumable, type UploadTask } from 'firebase/storage'
 import { auth, db, storage } from '../lib/firebase'
 import { useAudioStore } from '../store/audioStore'
+import { PLAN_LIMITS } from '../utils/planLimits'
 import type { Track } from '../types'
 
 type UploadProgress = {
@@ -181,6 +182,21 @@ export function useFirebaseMusic() {
     if (!user) {
       setError('Sign in required to upload tracks')
       throw new Error('Sign in required')
+    }
+
+    const userPlan = useAudioStore.getState().userPlan
+    const planConfig = PLAN_LIMITS[userPlan] || PLAN_LIMITS.free
+
+    if (file.size > planConfig.maxFileSizeBytes) {
+      const errorMsg = `File size exceeds the ${planConfig.tierName} limit of ${planConfig.formattedFileSize}. Upgrade to Pro for up to 100 MB uploads.`
+      setError(errorMsg)
+      throw new Error(errorMsg)
+    }
+
+    if (userPlan === 'free' && userTracks.length >= planConfig.maxTracks) {
+      const errorMsg = `Storage quota full (${planConfig.maxTracks} tracks max on Free). Upgrade to Pro for unlimited audio storage.`
+      setError(errorMsg)
+      throw new Error(errorMsg)
     }
 
     setIsUploading(true)

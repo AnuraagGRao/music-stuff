@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { Track } from '../types'
+import type { Track, UserPlan } from '../types'
 
 type RepeatMode = 'off' | 'one' | 'all'
 
@@ -14,6 +14,7 @@ type AudioState = {
   // User State
   favorites: string[]
   recentlyPlayed: string[]
+  userPlan: UserPlan
   
   // Playback State
   repeatMode: RepeatMode
@@ -47,6 +48,7 @@ type AudioState = {
   setPlaybackRate: (rate: number) => void
   setSleepTimer: (minutes: number | null, isEndOfTrack?: boolean) => void
   setIsQueueOpen: (isOpen: boolean) => void
+  setUserPlan: (plan: UserPlan) => void
 }
 
 const uniquePush = (items: string[], id: string) => [id, ...items.filter((item) => item !== id)].slice(0, 20)
@@ -68,6 +70,7 @@ export const useAudioStore = create<AudioState>()(
       playedInShuffle: [],
       favorites: [],
       recentlyPlayed: [],
+      userPlan: 'free',
       repeatMode: 'off',
       shuffled: false,
       volume: 0.8,
@@ -233,6 +236,7 @@ export const useAudioStore = create<AudioState>()(
     }),
 
   setIsQueueOpen: (isQueueOpen) => set({ isQueueOpen }),
+  setUserPlan: (userPlan) => set({ userPlan }),
 }),
     {
       name: 'music-stuff-storage',
@@ -243,6 +247,7 @@ export const useAudioStore = create<AudioState>()(
         repeatMode: state.repeatMode,
         shuffled: state.shuffled,
         playbackRate: state.playbackRate,
+        userPlan: state.userPlan,
       }),
     }
   )
