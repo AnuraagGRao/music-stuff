@@ -45,49 +45,14 @@ const getRandomUnplayedTrack = (available: string[], played: string[]): string |
   return unplayed[Math.floor(Math.random() * unplayed.length)]
 }
 
-const sampleTracks: Track[] = [
-  {
-    id: '1',
-    title: 'Night Drive',
-    artist: 'Anuraag Rao',
-    album: 'Neon Stories',
-    duration: 214,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-    coverUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80',
-    ownerId: 'public',
-    isPublic: true,
-    lyrics: [
-      { time: 0, text: 'City lights are moving slow' },
-      { time: 12, text: 'Midnight humming through the road' },
-      { time: 25, text: 'Your voice echoes with the bass' },
-      { time: 39, text: 'We fade into a brighter place' },
-    ],
-  },
-  {
-    id: '2',
-    title: 'Glass Horizon',
-    artist: 'Anuraag Rao',
-    album: 'Neon Stories',
-    duration: 192,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-    coverUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80',
-    ownerId: 'public',
-    isPublic: true,
-    lyrics: [
-      { time: 0, text: 'Hold the skyline in your hand' },
-      { time: 11, text: 'Echoes drift like silver sand' },
-      { time: 24, text: 'Every beat rewrites the night' },
-      { time: 36, text: 'Breaking out in ultraviolet light' },
-    ],
-  },
-]
+import { defaultTracks } from '../data/defaultTracks'
 
 export const useAudioStore = create<AudioState>()(
   persist(
     (set, get) => ({
-      tracks: sampleTracks,
-      currentTrackId: sampleTracks[0]?.id ?? null,
-      queue: sampleTracks.map((t) => t.id),
+      tracks: defaultTracks,
+      currentTrackId: defaultTracks[0]?.id ?? null,
+      queue: defaultTracks.map((t) => t.id),
       playedInShuffle: [],
       favorites: [],
       recentlyPlayed: [],

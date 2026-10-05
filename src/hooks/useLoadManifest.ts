@@ -25,25 +25,30 @@ interface PublicTrackManifest {
 
 export function useLoadManifest() {
   const loadedRef = useRef(false)
-  const { tracks, setTracks } = useAudioStore()
+  const { setTracks } = useAudioStore()
 
   useEffect(() => {
-    if (loadedRef.current || tracks.length > 0) return
+    if (loadedRef.current) return
 
     const loadManifest = async () => {
       try {
-        const response = await fetch('/publicManifest.json')
+        const baseUrl = import.meta.env.BASE_URL || '/'
+        const manifestUrl = `${baseUrl.endsWith('/') ? baseUrl : baseUrl + '/'}publicManifest.json`
+        const response = await fetch(manifestUrl)
         if (!response.ok) {
-          console.warn('Failed to fetch publicManifest.json')
+          console.warn('Failed to fetch publicManifest.json, using default bundled tracks')
           return
         }
 
         const manifest: PublicTrackManifest = await response.json()
+        if (!manifest?.tracks || !Array.isArray(manifest.tracks) || manifest.tracks.length === 0) {
+          return
+        }
 
         // Convert manifest tracks to Track objects WITH LYRICS
         const manifestTracks: Track[] = manifest.tracks.map((trackData) => {
           return {
-            id: trackData.id,
+            id: String(trackData.id),
             title: trackData.title,
             artist: trackData.artist,
             album: trackData.album,
@@ -51,19 +56,20 @@ export function useLoadManifest() {
             audioUrl: trackData.audioUrl,
             coverUrl: trackData.coverUrl,
             ownerId: trackData.ownerId,
-            isPublic: trackData.isPublic,
+            isPublic: trackData.isPublic !== false,
             lyricsStatus: 'completed' as const,
-            upvotesCount: trackData.upvotesCount,
-            downvotesCount: trackData.downvotesCount,
-            netScore: trackData.netScore,
+            upvotesCount: trackData.upvotesCount || 0,
+            downvotesCount: trackData.downvotesCount || 0,
+            netScore: trackData.netScore || 0,
             lyrics: trackData.lyrics || [],
           }
         })
 
         console.log(`[Manifest] Loaded ${manifestTracks.length} tracks with lyrics generated`)
 
-        // Set all manifest tracks directly (store starts empty)
-        setTracks(manifestTracks)
+        const currentTracks = useAudioStore.getState().tracks
+        const userTracks = currentTracks.filter((t) => t.ownerId !== 'public')
+        setTracks([...manifestTracks, ...userTracks])
 
         loadedRef.current = true
       } catch (error) {
@@ -72,5 +78,5 @@ export function useLoadManifest() {
     }
 
     loadManifest()
-  }, [])
+  }, [setTracks])
 }
