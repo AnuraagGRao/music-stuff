@@ -6,11 +6,11 @@ service firebase.storage {
     }
 
     match /audio/{userId}/{allPaths=**} {
-      allow read: if isSignedIn() && request.auth.uid == userId;
+      allow read: if true;
       allow write: if isSignedIn() 
         && request.auth.uid == userId
         && request.resource.size <= 100 * 1024 * 1024
-        && request.resource.contentType.matches('audio/.*');
+        && (request.resource.contentType.matches('audio/.*') || request.resource.contentType == 'application/octet-stream');
     }
 
     match /{allPaths=**} {

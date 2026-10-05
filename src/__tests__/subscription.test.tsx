@@ -9,7 +9,7 @@ import { PLAN_LIMITS, formatBytes, getPlanLimits } from '../utils/planLimits'
 describe('Subscription Model & Plan Limits', () => {
   beforeEach(() => {
     useAudioStore.setState({
-      userPlan: 'free',
+      userPlan: 'pro',
     })
   })
 
@@ -39,24 +39,18 @@ describe('Subscription Model & Plan Limits', () => {
   })
 
   describe('Audio Store Plan State', () => {
-    it('should default to free plan', () => {
+    it('should default to pro plan', () => {
       const state = useAudioStore.getState()
-      expect(state.userPlan).toBe('free')
+      expect(state.userPlan).toBe('pro')
     })
 
-    it('should update to pro plan via setUserPlan', () => {
+    it('should allow setting plan state', () => {
       const store = useAudioStore.getState()
-      store.setUserPlan('pro')
-      expect(useAudioStore.getState().userPlan).toBe('pro')
-    })
-
-    it('should revert back to free plan', () => {
-      const store = useAudioStore.getState()
-      store.setUserPlan('pro')
-      expect(useAudioStore.getState().userPlan).toBe('pro')
-
       store.setUserPlan('free')
       expect(useAudioStore.getState().userPlan).toBe('free')
+
+      store.setUserPlan('pro')
+      expect(useAudioStore.getState().userPlan).toBe('pro')
     })
   })
 
@@ -108,7 +102,7 @@ describe('Subscription Model & Plan Limits', () => {
       expect(onUpload).not.toHaveBeenCalled()
 
       // Test upgrade button click
-      const upgradeBtns = screen.getAllByRole('button', { name: /upgrade to pro/i })
+      const upgradeBtns = screen.getAllByRole('button', { name: /aura pro/i })
       expect(upgradeBtns.length).toBeGreaterThanOrEqual(1)
       fireEvent.click(upgradeBtns[0])
       expect(onUpgradeClick).toHaveBeenCalled()
@@ -181,7 +175,7 @@ describe('Subscription Model & Plan Limits', () => {
       render(<UpgradeModal isOpen={true} onClose={vi.fn()} />)
 
       expect(screen.getByText(/Expand Your Studio Storage/i)).toBeInTheDocument()
-      expect(screen.getByText(/Free Starter/i)).toBeInTheDocument()
+      expect(screen.getAllByText(/Free Starter/i).length).toBeGreaterThanOrEqual(1)
       expect(screen.getAllByText(/Aura Pro/i).length).toBeGreaterThanOrEqual(1)
       expect(screen.getByText(/Plan Specification Comparison/i)).toBeInTheDocument()
       expect(screen.getByText(/Content & Copyright Disclaimer/i)).toBeInTheDocument()
@@ -202,19 +196,23 @@ describe('Subscription Model & Plan Limits', () => {
       expect(screen.getByText(/\$3.25/i)).toBeInTheDocument()
     })
 
-    it('should upgrade to Pro upon clicking upgrade button', async () => {
+    it('should show Coming Soon on Pro button for Free users and prevent self-upgrade', () => {
       useAudioStore.setState({ userPlan: 'free' })
       render(<UpgradeModal isOpen={true} onClose={vi.fn()} />)
 
-      const upgradeBtn = screen.getByRole('button', { name: /upgrade to aura pro/i })
-      fireEvent.click(upgradeBtn)
+      const comingSoonBtn = screen.getByRole('button', { name: /aura pro • coming soon/i })
+      expect(comingSoonBtn).toBeInTheDocument()
+      fireEvent.click(comingSoonBtn)
 
-      await waitFor(
-        () => {
-          expect(useAudioStore.getState().userPlan).toBe('pro')
-        },
-        { timeout: 1500 }
-      )
+      expect(useAudioStore.getState().userPlan).toBe('free')
+      expect(screen.getByText(/public subscriptions are coming soon/i)).toBeInTheDocument()
+    })
+
+    it('should display active VIP membership for Pro users', () => {
+      useAudioStore.setState({ userPlan: 'pro' })
+      render(<UpgradeModal isOpen={true} onClose={vi.fn()} />)
+
+      expect(screen.getByText(/Active Aura Pro Member/i)).toBeInTheDocument()
     })
 
     it('should call onClose when close button is clicked', () => {

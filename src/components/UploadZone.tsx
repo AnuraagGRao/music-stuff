@@ -11,19 +11,10 @@ type UploadZoneProps = {
   onUpgradeClick?: () => void
 }
 
-const SUPPORTED_AUDIO_TYPES = [
-  'audio/mpeg',
-  'audio/wav',
-  'audio/ogg',
-  'audio/mp4',
-  'audio/x-m4a',
-  'audio/flac',
-  'audio/x-flac',
-]
-const SUPPORTED_EXTENSIONS = ['mp3', 'wav', 'ogg', 'm4a', 'flac']
+const SUPPORTED_EXTENSIONS = ['mp3', 'wav', 'ogg', 'm4a', 'flac', 'aac']
 
 const isSupportedAudio = (file: File): boolean => {
-  if (SUPPORTED_AUDIO_TYPES.includes(file.type)) {
+  if (file.type && (file.type.startsWith('audio/') || file.type === 'video/mp4' || file.type === 'audio/x-m4a')) {
     return true
   }
   const extension = file.name.split('.').pop()?.toLowerCase() || ''
@@ -130,7 +121,7 @@ export function UploadZone({
                   className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 text-black text-[0.65rem] font-bold shadow-md shadow-emerald-500/20 hover:opacity-90 transition cursor-pointer"
                 >
                   <Zap className="size-3 fill-black" />
-                  <span>Upgrade to Pro</span>
+                  <span>Aura Pro (Coming Soon)</span>
                 </button>
               )}
             </div>
@@ -217,7 +208,7 @@ export function UploadZone({
                 className="mt-2 inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 px-4 py-2 text-xs font-bold text-black shadow-lg shadow-emerald-500/20 hover:opacity-90 active:scale-98 transition cursor-pointer"
               >
                 <Zap className="size-3.5 fill-black" />
-                <span>Upgrade for Unlimited Storage</span>
+                <span>Aura Pro (Coming Soon)</span>
               </button>
             )}
           </div>
@@ -259,7 +250,7 @@ export function UploadZone({
           ref={inputRef}
           className="hidden"
           type="file"
-          accept={`${SUPPORTED_AUDIO_TYPES.join(',')}`}
+          accept="audio/*,.mp3,.wav,.ogg,.m4a,.flac,.aac"
           disabled={isUploading || isQuotaFull}
           onChange={async (event) => {
             const file = event.target.files?.[0]
@@ -284,7 +275,7 @@ export function UploadZone({
                 className="shrink-0 flex items-center gap-1 rounded-lg bg-emerald-500 px-3 py-1.5 text-xs font-bold text-black hover:bg-emerald-400 transition cursor-pointer"
               >
                 <Zap className="size-3 fill-black" />
-                <span>Upgrade to Pro</span>
+                <span>Aura Pro (Coming Soon)</span>
               </button>
             )}
           </div>

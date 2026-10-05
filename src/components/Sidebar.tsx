@@ -158,7 +158,7 @@ export function Sidebar({
                     className="w-full py-1.5 px-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-bold transition shadow-sm cursor-pointer text-center flex items-center justify-center gap-1"
                   >
                     <Zap className="size-3 fill-black" />
-                    <span>Upgrade to Pro • $4.99</span>
+                    <span>Aura Pro • Coming Soon</span>
                   </button>
                 )}
               </div>

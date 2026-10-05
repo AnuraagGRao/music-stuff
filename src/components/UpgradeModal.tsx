@@ -2,7 +2,6 @@ import { useState } from 'react'
 import {
   Check,
   X,
-  Zap,
   Crown,
   Sparkles,
   CloudUpload,
@@ -20,32 +19,11 @@ interface UpgradeModalProps {
 }
 
 export function UpgradeModal({ isOpen, onClose }: UpgradeModalProps) {
-  const { userPlan, setUserPlan } = useAudioStore()
+  const { userPlan } = useAudioStore()
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly')
-  const [isProcessing, setIsProcessing] = useState(false)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
   if (!isOpen) return null
-
-  const handleSelectPlan = async (targetPlan: 'free' | 'pro') => {
-    if (targetPlan === userPlan) return
-
-    setIsProcessing(true)
-    // Simulate brief payment / subscription activation latency
-    await new Promise((resolve) => setTimeout(resolve, 600))
-    setUserPlan(targetPlan)
-    setIsProcessing(false)
-
-    if (targetPlan === 'pro') {
-      setSuccessMessage('🎉 Welcome to Aura Pro! 100MB lossless uploads & unlimited storage are now unlocked.')
-    } else {
-      setSuccessMessage('Switched back to Free Starter plan.')
-    }
-
-    setTimeout(() => {
-      setSuccessMessage(null)
-    }, 3500)
-  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
@@ -163,18 +141,15 @@ export function UpgradeModal({ isOpen, onClose }: UpgradeModalProps) {
               </div>
             </div>
 
-            <button
-              type="button"
-              disabled={isProcessing || userPlan === 'free'}
-              onClick={() => handleSelectPlan('free')}
-              className={`mt-6 w-full py-2.5 px-4 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            <div
+              className={`mt-6 w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-center ${
                 userPlan === 'free'
-                  ? 'bg-white/10 text-slate-400 cursor-default'
-                  : 'bg-white/10 text-white hover:bg-white/20 active:scale-98'
+                  ? 'bg-white/10 text-slate-300 border border-white/10'
+                  : 'bg-white/[0.04] text-slate-500 border border-white/[0.06]'
               }`}
             >
-              {userPlan === 'free' ? 'Active Plan' : 'Downgrade to Free'}
-            </button>
+              {userPlan === 'free' ? 'Current Free Plan' : 'Free Starter Tier'}
+            </div>
           </div>
 
           {/* Pro Tier (Featured) */}
@@ -187,10 +162,17 @@ export function UpgradeModal({ isOpen, onClose }: UpgradeModalProps) {
           >
             {/* Top Badge */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span className="flex items-center gap-1 px-3 py-0.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400 text-black text-[0.65rem] font-extrabold uppercase tracking-wider shadow-md">
-                <Crown className="size-3" />
-                <span>Unlimited Storage</span>
-              </span>
+              {userPlan === 'pro' ? (
+                <span className="flex items-center gap-1 px-3 py-0.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400 text-black text-[0.65rem] font-extrabold uppercase tracking-wider shadow-md">
+                  <Crown className="size-3" />
+                  <span>VIP Pro Active</span>
+                </span>
+              ) : (
+                <span className="flex items-center gap-1 px-3 py-0.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-black text-[0.65rem] font-extrabold uppercase tracking-wider shadow-md">
+                  <Sparkles className="size-3" />
+                  <span>Coming Soon</span>
+                </span>
+              )}
             </div>
 
             <div className="space-y-4">
@@ -202,9 +184,13 @@ export function UpgradeModal({ isOpen, onClose }: UpgradeModalProps) {
                   </h3>
                   <p className="text-xs text-emerald-300/80 mt-0.5">Audiophile quality & full cloud freedom</p>
                 </div>
-                {userPlan === 'pro' && (
+                {userPlan === 'pro' ? (
                   <span className="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">
                     CURRENT PLAN
+                  </span>
+                ) : (
+                  <span className="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-amber-500/10 text-amber-300 font-mono border border-amber-500/20">
+                    COMING SOON
                   </span>
                 )}
               </div>
@@ -247,27 +233,24 @@ export function UpgradeModal({ isOpen, onClose }: UpgradeModalProps) {
               </div>
             </div>
 
-            <button
-              type="button"
-              disabled={isProcessing}
-              onClick={() => handleSelectPlan(userPlan === 'pro' ? 'free' : 'pro')}
-              className={`mt-6 w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                userPlan === 'pro'
-                  ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30'
-                  : 'bg-gradient-to-r from-emerald-400 to-cyan-400 text-black hover:opacity-90 active:scale-98 shadow-lg shadow-emerald-500/20'
-              }`}
-            >
-              {isProcessing ? (
-                <span className="size-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-              ) : userPlan === 'pro' ? (
-                <span>Manage Subscription / Revert to Free</span>
-              ) : (
-                <>
-                  <Zap className="size-3.5 fill-black" />
-                  <span>Upgrade to Aura Pro</span>
-                </>
-              )}
-            </button>
+            {userPlan === 'pro' ? (
+              <div className="mt-6 w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 shadow-lg shadow-emerald-500/10">
+                <Crown className="size-3.5 text-emerald-400 fill-emerald-400" />
+                <span>Active Aura Pro Member</span>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  setSuccessMessage('🚀 Aura Pro public subscriptions are coming soon! Stay tuned.')
+                  setTimeout(() => setSuccessMessage(null), 4000)
+                }}
+                className="mt-6 w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer bg-white/10 hover:bg-white/15 text-slate-200 border border-white/15 active:scale-98 shadow-md"
+              >
+                <Sparkles className="size-3.5 text-amber-400" />
+                <span>Aura Pro • Coming Soon</span>
+              </button>
+            )}
           </div>
         </div>
 

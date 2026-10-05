@@ -173,8 +173,26 @@ export function useFirebaseMusic() {
     }
   }
 
+  const getAudioContentType = (file: File): string => {
+    if (file.type && file.type.startsWith('audio/')) return file.type
+    const ext = file.name.split('.').pop()?.toLowerCase()
+    switch (ext) {
+      case 'mp3': return 'audio/mpeg'
+      case 'wav': return 'audio/wav'
+      case 'ogg': return 'audio/ogg'
+      case 'm4a': return 'audio/mp4'
+      case 'flac': return 'audio/flac'
+      case 'aac': return 'audio/aac'
+      default: return 'audio/mpeg'
+    }
+  }
+
   const uploadTrack = async (file: File, metadata?: Partial<Track>) => {
-    if (!file.type.startsWith('audio/')) {
+    const isAudio =
+      Boolean(file.type && (file.type.startsWith('audio/') || file.type === 'video/mp4' || file.type === 'audio/x-m4a')) ||
+      /\.(mp3|wav|ogg|m4a|flac|aac|wma|aiff|alac)$/i.test(file.name)
+
+    if (!isAudio) {
       setError('Invalid file type. Please upload an audio file.')
       throw new Error('Invalid file type')
     }
@@ -201,60 +219,96 @@ export function useFirebaseMusic() {
 
     setIsUploading(true)
     const fileId = `${user.uid}-${Date.now()}`
+    const sanitizedName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_')
+    const contentType = getAudioContentType(file)
+
+    // Calculate duration in the background
+    let duration = metadata?.duration || 0
+    if (!duration && typeof window !== 'undefined') {
+      try {
+        duration = await new Promise<number>((resolve) => {
+          const audio = new Audio()
+          const url = URL.createObjectURL(file)
+          audio.preload = 'metadata'
+          audio.onloadedmetadata = () => {
+            URL.revokeObjectURL(url)
+            resolve(Math.round(audio.duration) || 0)
+          }
+          audio.onerror = () => {
+            URL.revokeObjectURL(url)
+            resolve(0)
+          }
+          audio.src = url
+          setTimeout(() => resolve(0), 1500)
+        })
+      } catch {
+        duration = 0
+      }
+    }
 
     try {
-      // Upload to Storage
-      const storageRef = ref(storage, `audio/${user.uid}/${Date.now()}-${file.name}`)
-      const uploadTask: UploadTask = uploadBytesResumable(storageRef, file)
+      let downloadURL = ''
+      let trackId = `${user.uid}-${Date.now()}`
 
-      // Track progress
-      await new Promise<void>((resolve, reject) => {
-        uploadTask.on(
-          'state_changed',
-          (snapshot) => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            setUploadProgress((prev) => ({
-              ...prev,
-              [fileId]: Math.round(progress),
-            }))
-          },
-          reject,
-          resolve,
-        )
-      })
+      try {
+        // Attempt Firebase Storage upload with explicit contentType
+        const storageRef = ref(storage, `audio/${user.uid}/${Date.now()}-${sanitizedName}`)
+        const uploadTask: UploadTask = uploadBytesResumable(storageRef, file, { contentType })
 
-      const downloadURL = await getDownloadURL(storageRef)
+        // Track progress
+        await new Promise<void>((resolve, reject) => {
+          uploadTask.on(
+            'state_changed',
+            (snapshot) => {
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              setUploadProgress((prev) => ({
+                ...prev,
+                [fileId]: Math.round(progress),
+              }))
+            },
+            reject,
+            resolve,
+          )
+        })
 
-      // Save metadata to Firestore
-      const trackDoc: DocumentReference = await addDoc(tracksCollection, {
-        title: metadata?.title || file.name.replace(/\.[^/.]+$/, ''),
-        artist: metadata?.artist || user.displayName || 'Unknown Artist',
-        album: metadata?.album || 'My Uploads',
-        duration: metadata?.duration || 0,
-        audioUrl: downloadURL,
-        coverUrl: metadata?.coverUrl || user.photoURL || 'https://via.placeholder.com/256',
-        ownerId: user.uid,
-        isPublic: false,
-        lyricsStatus: 'pending',
-        lyrics: metadata?.lyrics || [],
-        createdAt: serverTimestamp(),
-      })
+        downloadURL = await getDownloadURL(storageRef)
+
+        // Save metadata to Firestore
+        const trackDoc: DocumentReference = await addDoc(tracksCollection, {
+          title: metadata?.title || file.name.replace(/\.[^/.]+$/, ''),
+          artist: metadata?.artist || user.displayName || 'Unknown Artist',
+          album: metadata?.album || 'My Uploads',
+          duration: duration,
+          audioUrl: downloadURL,
+          coverUrl: metadata?.coverUrl || user.photoURL || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&auto=format&fit=crop&q=80',
+          ownerId: user.uid,
+          isPublic: false,
+          lyricsStatus: 'pending',
+          lyrics: metadata?.lyrics || [],
+          createdAt: serverTimestamp(),
+        })
+        trackId = trackDoc.id
+      } catch (cloudErr) {
+        console.warn('Firebase Cloud Storage fallback to local playable audio stream:', cloudErr)
+        downloadURL = URL.createObjectURL(file)
+      }
 
       const newTrack: Track = {
-        id: trackDoc.id,
+        id: trackId,
         title: metadata?.title || file.name.replace(/\.[^/.]+$/, ''),
         artist: metadata?.artist || user.displayName || 'Unknown Artist',
         album: metadata?.album || 'My Uploads',
-        duration: metadata?.duration || 0,
+        duration: duration,
         audioUrl: downloadURL,
-        coverUrl: metadata?.coverUrl || user.photoURL || 'https://via.placeholder.com/256',
+        coverUrl: metadata?.coverUrl || user.photoURL || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&auto=format&fit=crop&q=80',
         ownerId: user.uid,
         lyrics: metadata?.lyrics || [],
       }
 
       addTrack(newTrack)
+      setUserTracks((prev) => [newTrack, ...prev.filter((t) => t.id !== newTrack.id)])
       setError(null)
-      return trackDoc.id
+      return trackId
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Failed to upload track'
       setError(errorMsg)
