@@ -1,5 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, type User } from 'firebase/auth'
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
+  signOut,
+  type User,
+} from 'firebase/auth'
 import {
   addDoc,
   collection,
@@ -21,6 +29,7 @@ type UploadProgress = {
 export function useFirebaseMusic() {
   const [user, setUser] = useState<User | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticating, setIsAuthenticating] = useState(false)
   const [uploadProgress, setUploadProgress] = useState<UploadProgress>({})
   const [isUploading, setIsUploading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -29,12 +38,29 @@ export function useFirebaseMusic() {
   const { setTracks, tracks, addTrack } = useAudioStore()
   const tracksCollection = useMemo(() => collection(db, 'tracks'), [])
 
-  // Listen to auth state changes
+  // Listen to auth state changes and handle redirect auth result
   useEffect(() => {
+    // Check redirect sign-in result (for mobile / popup-blocked fallbacks)
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          setUser(result.user)
+          setIsAuthenticated(true)
+          setIsAuthenticating(false)
+          setError(null)
+        }
+      })
+      .catch((err) => {
+        console.warn('Redirect auth check notice:', err)
+      })
+
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser)
       setIsAuthenticated(!!currentUser)
-      setError(null)
+      setIsAuthenticating(false)
+      if (currentUser) {
+        setError(null)
+      }
     })
 
     return () => unsubscribe()
@@ -70,7 +96,7 @@ export function useFirebaseMusic() {
       },
       (err) => {
         console.error('Error fetching user tracks:', err)
-        setError('Failed to load your tracks')
+        setError('Failed to load your personal tracks from cloud storage')
       },
     )
 
@@ -87,27 +113,44 @@ export function useFirebaseMusic() {
 
   const loginWithGoogle = async () => {
     try {
+      setIsAuthenticating(true)
       setError(null)
       const provider = new GoogleAuthProvider()
       provider.setCustomParameters({ prompt: 'select_account' })
+
       await signInWithPopup(auth, provider)
+      setIsAuthenticating(false)
     } catch (err) {
-      let errorMsg = 'Failed to sign in'
       const firebaseErr = err as { code?: string; message?: string } | null
-      
-      if (firebaseErr?.code === 'auth/configuration-not-found') {
-        errorMsg = 'Firebase auth not configured. Please:\n1. Go to Firebase Console\n2. Enable Google as an auth provider\n3. Add localhost:5173 to authorized redirect URIs'
+      let errorMsg = 'Failed to sign in with Google'
+
+      if (firebaseErr?.code === 'auth/unauthorized-domain') {
+        const domain = typeof window !== 'undefined' ? window.location.hostname : 'current domain'
+        errorMsg = `Domain "${domain}" is not authorized in Firebase. Add "${domain}" under Firebase Console > Authentication > Settings > Authorized domains.`
+      } else if (firebaseErr?.code === 'auth/configuration-not-found') {
+        errorMsg = 'Google sign-in is not enabled in Firebase. Enable Google provider in Firebase Console > Authentication > Sign-in method.'
       } else if (firebaseErr?.code === 'auth/popup-blocked') {
-        errorMsg = 'Sign-in popup was blocked. Please allow popups for this site.'
-      } else if (firebaseErr?.code === 'auth/popup-closed-by-user') {
-        errorMsg = 'Sign-in cancelled'
+        try {
+          const provider = new GoogleAuthProvider()
+          provider.setCustomParameters({ prompt: 'select_account' })
+          await signInWithRedirect(auth, provider)
+          return
+        } catch (_redirectErr) {
+          errorMsg = 'Sign-in popup and redirect were blocked. Please enable popups for this site in your browser.'
+        }
+      } else if (
+        firebaseErr?.code === 'auth/popup-closed-by-user' ||
+        firebaseErr?.code === 'auth/cancelled-popup-request'
+      ) {
         setError(null)
+        setIsAuthenticating(false)
         return
       } else if (firebaseErr?.message) {
         errorMsg = firebaseErr.message
       }
-      
+
       setError(errorMsg)
+      setIsAuthenticating(false)
       console.error('Login error:', err)
     }
   }
@@ -116,6 +159,8 @@ export function useFirebaseMusic() {
     try {
       setError(null)
       await signOut(auth)
+      setUser(null)
+      setIsAuthenticated(false)
       setUserTracks([])
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Failed to sign out'
@@ -159,32 +204,31 @@ export function useFirebaseMusic() {
         )
       })
 
-      const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
+      const downloadURL = await getDownloadURL(storageRef)
 
-      // Save track metadata to Firestore
+      // Save metadata to Firestore
       const trackDoc: DocumentReference = await addDoc(tracksCollection, {
         title: metadata?.title || file.name.replace(/\.[^/.]+$/, ''),
-        artist: metadata?.artist || 'Unknown',
-        album: metadata?.album || 'Uploads',
+        artist: metadata?.artist || user.displayName || 'Unknown Artist',
+        album: metadata?.album || 'My Uploads',
         duration: metadata?.duration || 0,
         audioUrl: downloadURL,
-        coverUrl: metadata?.coverUrl || 'https://via.placeholder.com/256',
+        coverUrl: metadata?.coverUrl || user.photoURL || 'https://via.placeholder.com/256',
         ownerId: user.uid,
+        isPublic: false,
         lyricsStatus: 'pending',
         lyrics: metadata?.lyrics || [],
         createdAt: serverTimestamp(),
-        updatedAt: serverTimestamp(),
       })
 
-      // Add to local store immediately for optimistic UI
       const newTrack: Track = {
         id: trackDoc.id,
         title: metadata?.title || file.name.replace(/\.[^/.]+$/, ''),
-        artist: metadata?.artist || 'Unknown',
-        album: metadata?.album || 'Uploads',
+        artist: metadata?.artist || user.displayName || 'Unknown Artist',
+        album: metadata?.album || 'My Uploads',
         duration: metadata?.duration || 0,
         audioUrl: downloadURL,
-        coverUrl: metadata?.coverUrl || 'https://via.placeholder.com/256',
+        coverUrl: metadata?.coverUrl || user.photoURL || 'https://via.placeholder.com/256',
         ownerId: user.uid,
         lyrics: metadata?.lyrics || [],
       }
@@ -210,12 +254,14 @@ export function useFirebaseMusic() {
   return {
     user,
     isAuthenticated,
+    isAuthenticating,
     loginWithGoogle,
     logout,
     uploadTrack,
     uploadProgress,
     isUploading,
     error,
+    clearError: () => setError(null),
     userTracks,
   }
 }

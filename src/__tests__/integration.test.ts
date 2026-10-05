@@ -7,6 +7,8 @@ import { useFirebaseMusic } from '../hooks/useFirebaseMusic'
 vi.mock('firebase/auth', () => ({
   GoogleAuthProvider: class {},
   signInWithPopup: vi.fn(),
+  signInWithRedirect: vi.fn(() => Promise.resolve()),
+  getRedirectResult: vi.fn(() => Promise.resolve(null)),
   signOut: vi.fn(),
   onAuthStateChanged: vi.fn((auth, callback) => {
     callback(null) // Start unauthenticated
