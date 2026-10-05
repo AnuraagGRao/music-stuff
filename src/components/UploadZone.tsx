@@ -1,4 +1,4 @@
-import { UploadCloud, AlertCircle, Zap, HardDrive, CheckCircle2 } from 'lucide-react'
+import { UploadCloud, AlertCircle, Zap, HardDrive, CheckCircle2, Scale } from 'lucide-react'
 import { useRef, useState } from 'react'
 import { useAudioStore } from '../store/audioStore'
 import { PLAN_LIMITS } from '../utils/planLimits'
@@ -248,6 +248,10 @@ export function UploadZone({
             >
               {isUploading ? `Uploading (${currentProgress}%)` : 'Select Audio File'}
             </button>
+
+            <p className="mt-2.5 text-[0.68rem] text-slate-400">
+              By uploading, you affirm that you own or hold lawful licenses for this audio.
+            </p>
           </>
         )}
 
@@ -293,6 +297,28 @@ export function UploadZone({
             <span>{success}</span>
           </div>
         )}
+      </div>
+
+      {/* Legal & DMCA Safe Harbor Disclaimer */}
+      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5 text-left space-y-2">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <Scale className="size-4 text-amber-400 shrink-0" />
+            <h3 className="text-xs font-semibold text-white">Content Rights & Copyright Notice</h3>
+          </div>
+          <span className="text-[0.62rem] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 font-mono font-medium">
+            DMCA Safe Harbor § 512
+          </span>
+        </div>
+
+        <p className="text-[0.7rem] text-slate-400 leading-relaxed">
+          <strong className="text-slate-300">Disclaimer of Liability:</strong> Users are solely and personally responsible for the audio files they upload. Music For All operates purely as a neutral cloud hosting platform and strictly disclaims all liability for unauthorized, unlicensed, pirated, or infringing uploads. You warrant and represent that you hold all legal rights to upload and store this media.
+        </p>
+
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/[0.05] text-[0.65rem] text-slate-500">
+          <span>Infringing material is subject to immediate takedown upon verified notice.</span>
+          <span className="font-mono text-slate-400">DMCA Notice: legal@musicforall.app</span>
+        </div>
       </div>
     </section>
   )

@@ -74,7 +74,7 @@ describe('Subscription Model & Plan Limits', () => {
       )
 
       expect(screen.getByText(/Free: 15MB limit/i)).toBeInTheDocument()
-      expect(screen.getByText(/2/i)).toBeInTheDocument()
+      expect(screen.getByText('2')).toBeInTheDocument()
       expect(screen.getByText(/\/ 5 tracks used/i)).toBeInTheDocument()
     })
 
@@ -158,16 +158,34 @@ describe('Subscription Model & Plan Limits', () => {
         expect(onUpload).toHaveBeenCalledWith(proTrack)
       })
     })
+
+    it('should display legal copyright disclaimer and DMCA safe harbor notice', () => {
+      render(
+        <UploadZone
+          onUpload={vi.fn()}
+          isUploading={false}
+          progress={{}}
+          userTracksCount={0}
+        />
+      )
+
+      expect(screen.getByText(/Content Rights & Copyright Notice/i)).toBeInTheDocument()
+      expect(screen.getByText(/DMCA Safe Harbor § 512/i)).toBeInTheDocument()
+      expect(screen.getByText(/Users are solely and personally responsible for the audio files they upload/i)).toBeInTheDocument()
+      expect(screen.getByText(/legal@musicforall.app/i)).toBeInTheDocument()
+    })
   })
 
   describe('UpgradeModal Component', () => {
-    it('should render modal with plan pricing and comparison', () => {
+    it('should render modal with plan pricing, comparison, and legal disclaimer', () => {
       render(<UpgradeModal isOpen={true} onClose={vi.fn()} />)
 
       expect(screen.getByText(/Expand Your Studio Storage/i)).toBeInTheDocument()
       expect(screen.getByText(/Free Starter/i)).toBeInTheDocument()
       expect(screen.getAllByText(/Aura Pro/i).length).toBeGreaterThanOrEqual(1)
       expect(screen.getByText(/Plan Specification Comparison/i)).toBeInTheDocument()
+      expect(screen.getByText(/Content & Copyright Disclaimer/i)).toBeInTheDocument()
+      expect(screen.getByText(/Subscribers hold sole legal responsibility for all uploaded tracks/i)).toBeInTheDocument()
     })
 
     it('should switch between monthly and annual billing', () => {

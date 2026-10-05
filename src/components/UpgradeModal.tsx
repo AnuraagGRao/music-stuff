@@ -308,9 +308,14 @@ export function UpgradeModal({ isOpen, onClose }: UpgradeModalProps) {
           </div>
         </div>
 
-        {/* Footer info */}
-        <div className="text-center pt-1 text-[0.7rem] text-slate-500">
-          Instant activation • Cancel or switch plans anytime with one click • 256-bit secure cloud sync
+        {/* Legal & Terms Notice */}
+        <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3 text-center space-y-1">
+          <p className="text-[0.68rem] text-slate-400">
+            <strong className="text-slate-300">Content & Copyright Disclaimer:</strong> Subscribers hold sole legal responsibility for all uploaded tracks. Music For All provides private cloud storage and strictly disclaims liability for unauthorized or unlicensed intellectual property. Infringing uploads are subject to immediate removal and account termination.
+          </p>
+          <p className="text-[0.65rem] text-slate-500 font-mono">
+            DMCA Safe Harbor Compliant • 256-Bit Encrypted Cloud Sync • Cancel Anytime
+          </p>
         </div>
       </div>
     </div>

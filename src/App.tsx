@@ -502,7 +502,7 @@ function App() {
                   <div>
                     <h3 className="text-sm font-semibold text-white">Cloud Music Storage</h3>
                     <p className="text-xs text-slate-400 mt-1 max-w-xs">
-                      Sign in with Google to upload your own MP3/WAV tracks and sync them across all your devices.
+                      Sign in with Google to upload and sync your personal audio. Users are solely responsible for holding lawful rights to uploaded media under DMCA Safe Harbor.
                     </p>
                   </div>
                   <button
