@@ -127,8 +127,11 @@ export function useFirebaseMusic() {
       if (firebaseErr?.code === 'auth/unauthorized-domain') {
         const domain = typeof window !== 'undefined' ? window.location.hostname : 'current domain'
         errorMsg = `Domain "${domain}" is not authorized in Firebase. Add "${domain}" under Firebase Console > Authentication > Settings > Authorized domains.`
-      } else if (firebaseErr?.code === 'auth/configuration-not-found') {
-        errorMsg = 'Google sign-in is not enabled in Firebase. Enable Google provider in Firebase Console > Authentication > Sign-in method.'
+      } else if (
+        firebaseErr?.code === 'auth/operation-not-allowed' ||
+        firebaseErr?.code === 'auth/configuration-not-found'
+      ) {
+        errorMsg = 'Google Sign-in is not enabled in your Firebase project. Go to Firebase Console (https://console.firebase.google.com/) > Select "music-stuff-7420" > Authentication > Sign-in method > Add/Enable Google provider.'
       } else if (firebaseErr?.code === 'auth/popup-blocked') {
         try {
           const provider = new GoogleAuthProvider()

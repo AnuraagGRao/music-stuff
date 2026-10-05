@@ -10,8 +10,9 @@ service cloud.firestore {
     }
 
     match /tracks/{trackId} {
+      allow read: if resource.data.isPublic == true || isOwner(resource.data.ownerId);
       allow create: if isSignedIn() && request.resource.data.ownerId == request.auth.uid;
-      allow read, update, delete: if isOwner(resource.data.ownerId);
+      allow update, delete: if isOwner(resource.data.ownerId);
     }
 
     match /playlists/{playlistId} {
@@ -21,6 +22,21 @@ service cloud.firestore {
 
     match /users/{userId} {
       allow read, write: if isSignedIn() && request.auth.uid == userId;
+    }
+
+    match /votes/{voteId} {
+      allow read: if isSignedIn();
+      allow create, update: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    match /user_history/{historyId} {
+      allow read, update, delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }

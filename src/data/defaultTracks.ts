@@ -1,45 +1,40 @@
-import type { Track } from "../types"
+import type { Track } from '../types'
 
 export const defaultTracks: Track[] = [
   {
+    "isPublic": true,
     "id": "1",
-    "title": "After the Power Dies",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 178,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/After_the_Power_Dies.mp3",
     "coverUrl": "/audio/thumbnails/After_the_Power_Dies.jpg",
+    "title": "After the Power Dies",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 178,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 89,
-        "text": "Thank you for watching this video and I'll see you in the next video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "2",
-    "title": "Aligning the Lattice",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 169,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Aligning_the_Lattice.mp3",
     "coverUrl": "/audio/thumbnails/Aligning_the_Lattice.jpg",
+    "title": "Aligning the Lattice",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 169,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
-        "text": "Music The light it's caused, the signal home Element smooth through the wire This parade process"
+        "text": "The light it's caused, the signal home Element smooth through the wire This parade process"
       },
       {
         "time": 51,
@@ -56,19 +51,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "3",
-    "title": "Alpha and Omega",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Alpha_and_Omega.mp3",
     "coverUrl": "/audio/thumbnails/Alpha_and_Omega.jpg",
+    "title": "Alpha and Omega",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -89,19 +84,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "4",
-    "title": "Amber Haze",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 171,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Amber_Haze.mp3",
     "coverUrl": "/audio/thumbnails/Amber_Haze.jpg",
+    "title": "Amber Haze",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 171,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -122,40 +117,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "5",
-    "title": "Ascending the Zenith",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 162,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Ascending_the_Zenith.mp3",
     "coverUrl": "/audio/thumbnails/Ascending_the_Zenith.jpg",
+    "title": "Ascending the Zenith",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 162,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 81,
-        "text": "Thank you very much."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "6",
-    "title": "Bedrock Authority",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 170,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Bedrock_Authority.mp3",
     "coverUrl": "/audio/thumbnails/Bedrock_Authority.jpg",
+    "title": "Bedrock Authority",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 170,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -176,19 +166,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "7",
-    "title": "Bedrock Spine",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Bedrock_Spine.mp3",
     "coverUrl": "/audio/thumbnails/Bedrock_Spine.jpg",
+    "title": "Bedrock Spine",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 30,
@@ -209,120 +199,89 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "8",
-    "title": "Before the First Move",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 169,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Before_the_First_Move.mp3",
     "coverUrl": "/audio/thumbnails/Before_the_First_Move.jpg",
+    "title": "Before the First Move",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 169,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 84.5,
-        "text": "Thank you very much for watching this video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "9",
-    "title": "Before the Match",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Before_the_Match.mp3",
     "coverUrl": "/audio/thumbnails/Before_the_Match.jpg",
+    "title": "Before the Match",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 57.7,
-        "text": "Thank you so much for watching this video and I hope to see you in the next video."
-      },
-      {
-        "time": 115.3,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "10",
-    "title": "Before The Screen Goes Black",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 168,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Before_The_Screen_Goes_Black.mp3",
     "coverUrl": "/audio/thumbnails/Before_The_Screen_Goes_Black.jpg",
+    "title": "Before The Screen Goes Black",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 168,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 56,
-        "text": "You"
-      },
-      {
-        "time": 112,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "11",
-    "title": "Before The Screen Went Dark",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 171,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Before_The_Screen_Went_Dark.mp3",
     "coverUrl": "/audio/thumbnails/Before_The_Screen_Went_Dark.jpg",
+    "title": "Before The Screen Went Dark",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 171,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 57,
         "text": "O-O-O-O-O-O-O-O-O-O-O-O-O-O."
-      },
-      {
-        "time": 114,
-        "text": "Thank you so much for watching this video and I hope you enjoyed this video and I'll see you in the next video!"
       }
     ]
   },
   {
+    "isPublic": true,
     "id": "12",
-    "title": "Beneath The Current",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Beneath_The_Current.mp3",
     "coverUrl": "/audio/thumbnails/Beneath_The_Current.jpg",
+    "title": "Beneath The Current",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
-      {
-        "time": 0,
-        "text": "Thank you so much for watching this video."
-      },
       {
         "time": 30,
         "text": "Sinking through the deep blue, losing every trace, drifting into acquiesce, find a hollow space, slow motion, geometric shifting with the flow, wherever you're missing, starts to glow and grow. Currenting me on the field of love, pause the pressure, floating in the blue with tightness, not a man to run."
@@ -338,19 +297,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "13",
-    "title": "Biological Tax",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Biological_Tax.mp3",
     "coverUrl": "/audio/thumbnails/Biological_Tax.jpg",
+    "title": "Biological Tax",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -371,19 +330,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "14",
-    "title": "Broken Glass Logic",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Broken_Glass_Logic.mp3",
     "coverUrl": "/audio/thumbnails/Broken_Glass_Logic.jpg",
+    "title": "Broken Glass Logic",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 21.9,
@@ -416,45 +375,36 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "15",
-    "title": "Cascading Logic",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Cascading_Logic.mp3",
     "coverUrl": "/audio/thumbnails/Cascading_Logic.jpg",
+    "title": "Cascading Logic",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 88,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "16",
-    "title": "Celestial Math",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Celestial_Math.mp3",
     "coverUrl": "/audio/thumbnails/Celestial_Math.jpg",
+    "title": "Celestial Math",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
-      {
-        "time": 0,
-        "text": "Thank you very much. Cold light in my dreams Void off a shift I've got a stellar gravity pool The dark is so full So far"
-      },
       {
         "time": 63,
         "text": "Let's be on the rising Open to the lightning Open to the lightning Ballast city rising Stars on the lightning Stars on the lightning"
@@ -470,19 +420,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "17",
-    "title": "Centaur's Aim",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Centaur_s_Aim.mp3",
     "coverUrl": "/audio/thumbnails/Centaur_s_Aim.jpg",
+    "title": "Centaur's Aim",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -503,19 +453,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "18",
-    "title": "Clay Turned to Stone",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 171,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Clay_Turned_to_Stone.mp3",
     "coverUrl": "/audio/thumbnails/Clay_Turned_to_Stone.jpg",
+    "title": "Clay Turned to Stone",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 171,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 30,
@@ -536,40 +486,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "19",
-    "title": "Clear the Board",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Clear_the_Board.mp3",
     "coverUrl": "/audio/thumbnails/Clear_the_Board.jpg",
+    "title": "Clear the Board",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 86.5,
-        "text": "."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "20",
-    "title": "Clearing The Lines",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 174,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Clearing_The_Lines.mp3",
     "coverUrl": "/audio/thumbnails/Clearing_The_Lines.jpg",
+    "title": "Clearing The Lines",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 174,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 30,
@@ -590,61 +535,51 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "21",
-    "title": "Clockwork Failure",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 171,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Clockwork_Failure.mp3",
     "coverUrl": "/audio/thumbnails/Clockwork_Failure.jpg",
+    "title": "Clockwork Failure",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 171,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 85.5,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "22",
-    "title": "Controller Disconnected",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 172,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Controller_Disconnected.mp3",
     "coverUrl": "/audio/thumbnails/Controller_Disconnected.jpg",
+    "title": "Controller Disconnected",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 172,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 86,
-        "text": "Thank you so much for watching this video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "23",
-    "title": "Critical Overload",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 172,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Critical_Overload.mp3",
     "coverUrl": "/audio/thumbnails/Critical_Overload.jpg",
+    "title": "Critical Overload",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 172,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 24.6,
@@ -673,40 +608,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "24",
-    "title": "Crossing the Zenith",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Crossing_the_Zenith.mp3",
     "coverUrl": "/audio/thumbnails/Crossing_the_Zenith.jpg",
+    "title": "Crossing the Zenith",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "Music"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "25",
-    "title": "Crown Made of Fire",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Crown_Made_of_Fire.mp3",
     "coverUrl": "/audio/thumbnails/Crown_Made_of_Fire.jpg",
+    "title": "Crown Made of Fire",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -727,61 +657,51 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "26",
-    "title": "Final Block Drop",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Final_Block_Drop.mp3",
     "coverUrl": "/audio/thumbnails/Final_Block_Drop.jpg",
+    "title": "Final Block Drop",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 88,
-        "text": "Thank you very much for watching, please subscribe, like, and turn on the notification bell so you don't miss out on the next video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "27",
-    "title": "Final Boss Pursuit",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Final_Boss_Pursuit.mp3",
     "coverUrl": "/audio/thumbnails/Final_Boss_Pursuit.jpg",
+    "title": "Final Boss Pursuit",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "28",
-    "title": "Full Throttle Logic",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Full_Throttle_Logic.mp3",
     "coverUrl": "/audio/thumbnails/Full_Throttle_Logic.jpg",
+    "title": "Full Throttle Logic",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 15,
@@ -790,19 +710,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "29",
-    "title": "Gemini Rising",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Gemini_Rising.mp3",
     "coverUrl": "/audio/thumbnails/Gemini_Rising.jpg",
+    "title": "Gemini Rising",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -823,19 +743,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "30",
-    "title": "Geometry Bends",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Geometry_Bends.mp3",
     "coverUrl": "/audio/thumbnails/Geometry_Bends.jpg",
+    "title": "Geometry Bends",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 30,
@@ -856,65 +776,51 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "31",
-    "title": "Gravity Lockdown",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 163,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Gravity_Lockdown.mp3",
     "coverUrl": "/audio/thumbnails/Gravity_Lockdown.jpg",
+    "title": "Gravity Lockdown",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 163,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 81.5,
-        "text": "Thank you so much for watching this video and I hope to see you in the next video and see you in the next video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "32",
-    "title": "Gravity's Last Descent",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 164,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Gravity_s_Last_Descent.mp3",
     "coverUrl": "/audio/thumbnails/Gravity_s_Last_Descent.jpg",
+    "title": "Gravity's Last Descent",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 164,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 54.7,
-        "text": "Thank you so much for watching this video and I hope to see you in the next video and I'll see you in the next video!"
-      },
-      {
-        "time": 109.3,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "33",
-    "title": "Gravity's Last Pull",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Gravity_s_Last_Pull.mp3",
     "coverUrl": "/audio/thumbnails/Gravity_s_Last_Pull.jpg",
+    "title": "Gravity's Last Pull",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 30,
@@ -935,19 +841,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "34",
-    "title": "Greenery and Stone",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 174,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Greenery_and_Stone.mp3",
     "coverUrl": "/audio/thumbnails/Greenery_and_Stone.jpg",
+    "title": "Greenery and Stone",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 174,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -968,40 +874,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "35",
-    "title": "Grid Collapse",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Grid_Collapse.mp3",
     "coverUrl": "/audio/thumbnails/Grid_Collapse.jpg",
+    "title": "Grid Collapse",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 86.5,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "36",
-    "title": "Hammer Against Anvil",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Hammer_Against_Anvil.mp3",
     "coverUrl": "/audio/thumbnails/Hammer_Against_Anvil.jpg",
+    "title": "Hammer Against Anvil",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 21.9,
@@ -1034,19 +935,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "37",
-    "title": "Hammer on Steel",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 169,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Hammer_on_Steel.mp3",
     "coverUrl": "/audio/thumbnails/Hammer_on_Steel.jpg",
+    "title": "Hammer on Steel",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 169,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 24.1,
@@ -1075,19 +976,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "38",
-    "title": "Heart Is A Machine",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 181,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Heart_Is_A_Machine.mp3",
     "coverUrl": "/audio/thumbnails/Heart_Is_A_Machine.jpg",
+    "title": "Heart Is A Machine",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 181,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -1108,44 +1009,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "39",
-    "title": "Heat of the Closing Gate",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Heat_of_the_Closing_Gate.mp3",
     "coverUrl": "/audio/thumbnails/Heat_of_the_Closing_Gate.jpg",
+    "title": "Heat of the Closing Gate",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 58.3,
-        "text": "."
-      },
-      {
-        "time": 116.7,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "40",
-    "title": "Hold That L Piece",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Hold_That_L_Piece.mp3",
     "coverUrl": "/audio/thumbnails/Hold_That_L_Piece.jpg",
+    "title": "Hold That L Piece",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -1166,19 +1058,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "41",
-    "title": "Horizon Drift",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Horizon_Drift.mp3",
     "coverUrl": "/audio/thumbnails/Horizon_Drift.jpg",
+    "title": "Horizon Drift",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -1199,40 +1091,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "42",
-    "title": "Iron Geometry",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Iron_Geometry.mp3",
     "coverUrl": "/audio/thumbnails/Iron_Geometry.jpg",
+    "title": "Iron Geometry",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "Thank you very much for watching this video and if you enjoyed this video, please leave a like and subscribe to my channel and press the bell icon to be notified when I post a new video on my channel."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "43",
-    "title": "Iron Handshake",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 178,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Iron_Handshake.mp3",
     "coverUrl": "/audio/thumbnails/Iron_Handshake.jpg",
+    "title": "Iron Handshake",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 178,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 22.2,
@@ -1265,19 +1152,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "44",
-    "title": "Iron Threshold",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 172,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Iron_Threshold.mp3",
     "coverUrl": "/audio/thumbnails/Iron_Threshold.jpg",
+    "title": "Iron Threshold",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 172,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 24.6,
@@ -1306,65 +1193,51 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "45",
-    "title": "Kernel Panic",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Kernel_Panic.mp3",
     "coverUrl": "/audio/thumbnails/Kernel_Panic.jpg",
+    "title": "Kernel Panic",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 88,
-        "text": "."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "46",
-    "title": "Last Quarter",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Last_Quarter.mp3",
     "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80",
+    "title": "Last Quarter",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 58.7,
-        "text": "Thank you so much for watching this video and I'll see you in the next video."
-      },
-      {
-        "time": 117.3,
-        "text": "Thank you for watching!"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "47",
-    "title": "Leo’s Crown",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Leo’s_Crown.mp3",
     "coverUrl": "/audio/thumbnails/Leo’s_Crown.jpg",
+    "title": "Leo’s Crown",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -1385,19 +1258,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "48",
-    "title": "Logic In Retreat",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Logic_In_Retreat.mp3",
     "coverUrl": "/audio/thumbnails/Logic_In_Retreat.jpg",
+    "title": "Logic In Retreat",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -1418,19 +1291,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "49",
-    "title": "Logic Into Trust",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Logic_Into_Trust.mp3",
     "coverUrl": "/audio/thumbnails/Logic_Into_Trust.jpg",
+    "title": "Logic Into Trust",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -1451,19 +1324,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "50",
-    "title": "Margin Of Error",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Margin_Of_Error.mp3",
     "coverUrl": "/audio/thumbnails/Margin_Of_Error.jpg",
+    "title": "Margin Of Error",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 22.1,
@@ -1496,19 +1369,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "51",
-    "title": "Maximum Load",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Maximum_Load.mp3",
     "coverUrl": "/audio/thumbnails/Maximum_Load.jpg",
+    "title": "Maximum Load",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 22,
@@ -1541,19 +1414,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "52",
-    "title": "Maximum Thermal Load",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 181,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Maximum_Thermal_Load.mp3",
     "coverUrl": "/audio/thumbnails/Maximum_Thermal_Load.jpg",
+    "title": "Maximum Thermal Load",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 181,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 22.6,
@@ -1586,19 +1459,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "53",
-    "title": "Maximum Thermal Load Two",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Maximum_Thermal_Load_Two.mp3",
     "coverUrl": "/audio/thumbnails/Maximum_Thermal_Load_Two.jpg",
+    "title": "Maximum Thermal Load Two",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 21.9,
@@ -1631,19 +1504,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "54",
-    "title": "Mercury Rising",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Mercury_Rising.mp3",
     "coverUrl": "/audio/thumbnails/Mercury_Rising.jpg",
+    "title": "Mercury Rising",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -1664,40 +1537,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "55",
-    "title": "Midnight Assembly",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Midnight_Assembly.mp3",
     "coverUrl": "/audio/thumbnails/Midnight_Assembly.jpg",
+    "title": "Midnight Assembly",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 87.5,
-        "text": "Thank you so much for watching this video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "56",
-    "title": "Midnight at Degrees",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Midnight_at_Degrees.mp3",
     "coverUrl": "/audio/thumbnails/Midnight_at_Degrees.jpg",
+    "title": "Midnight at Degrees",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 22.1,
@@ -1730,19 +1598,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "57",
-    "title": "Obsidian Apex",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Obsidian_Apex.mp3",
     "coverUrl": "/audio/thumbnails/Obsidian_Apex.jpg",
+    "title": "Obsidian Apex",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -1763,40 +1631,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "58",
-    "title": "Obsidian Interface",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 180,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Obsidian_Interface.mp3",
     "coverUrl": "/audio/thumbnails/Obsidian_Interface.jpg",
+    "title": "Obsidian Interface",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 180,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 90,
-        "text": "Thank you very much for watching this video and I hope to see you in the next video and see you in the next video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "59",
-    "title": "One Final Gate",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/One_Final_Gate.mp3",
     "coverUrl": "/audio/thumbnails/One_Final_Gate.jpg",
+    "title": "One Final Gate",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -1817,19 +1680,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "60",
-    "title": "One Last Arc (1)",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/One_Last_Arc (1).mp3",
     "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80",
+    "title": "One Last Arc (1)",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 7.5,
@@ -1846,19 +1709,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "61",
-    "title": "One Last Arc",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/One_Last_Arc.mp3",
     "coverUrl": "/audio/thumbnails/One_Last_Arc.jpg",
+    "title": "One Last Arc",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -1879,19 +1742,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "62",
-    "title": "One More Continue (1)",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/One_More_Continue (1).mp3",
     "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80",
+    "title": "One More Continue (1)",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 22.1,
@@ -1924,19 +1787,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "63",
-    "title": "One More Continue",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/One_More_Continue.mp3",
     "coverUrl": "/audio/thumbnails/One_More_Continue.jpg",
+    "title": "One More Continue",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 22.1,
@@ -1969,24 +1832,20 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "64",
-    "title": "Patience In The Wrist",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Patience_In_The_Wrist.mp3",
     "coverUrl": "/audio/thumbnails/Patience_In_The_Wrist.jpg",
+    "title": "Patience In The Wrist",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
-      {
-        "time": 0,
-        "text": "Thank you very much for watching this video and I hope to see you in the next video. Dice settles on the wooden frame No rush to win, the architects gain Just the weight of a silver and the gold Building a truth that's been to hold"
-      },
       {
         "time": 49,
         "text": "Patience in the wrist, marble in the eye Watching the heavy blocks drop from the sky It's a slow button, baby, it's a deep blue Every movement is the hardest of the food Solid like mountain, soft like the touch When you build your right, you don't need to run"
@@ -2002,94 +1861,67 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "65",
-    "title": "Pattern Lock",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Pattern_Lock.mp3",
     "coverUrl": "/audio/thumbnails/Pattern_Lock.jpg",
+    "title": "Pattern Lock",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 88.5,
-        "text": "Thank you very much for watching this video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "66",
-    "title": "Pattern Perfect",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Pattern_Perfect.mp3",
     "coverUrl": "/audio/thumbnails/Pattern_Perfect.jpg",
+    "title": "Pattern Perfect",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 0,
-        "text": "You"
-      },
-      {
-        "time": 30,
-        "text": "You"
-      },
-      {
-        "time": 90,
-        "text": "Thank you so much for watching this video."
-      },
-      {
-        "time": 120,
-        "text": "Thank you. Thank you very much for watching this video and don't forget to subscribe to my channel and press the bell icon to not miss any new videos."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "67",
-    "title": "Peak Altitude",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 174,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Peak_Altitude.mp3",
     "coverUrl": "/audio/thumbnails/Peak_Altitude.jpg",
+    "title": "Peak Altitude",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 174,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 87,
-        "text": "music"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "68",
-    "title": "Peak Operational Load",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 170,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Peak_Operational_Load.mp3",
     "coverUrl": "/audio/thumbnails/Peak_Operational_Load.jpg",
+    "title": "Peak Operational Load",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 170,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -2110,19 +1942,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "69",
-    "title": "Perfect Alignment",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 172,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Perfect_Alignment.mp3",
     "coverUrl": "/audio/thumbnails/Perfect_Alignment.jpg",
+    "title": "Perfect Alignment",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 172,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 24.6,
@@ -2151,61 +1983,51 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "70",
-    "title": "Perfect Rotation",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Perfect_Rotation.mp3",
     "coverUrl": "/audio/thumbnails/Perfect_Rotation.jpg",
+    "title": "Perfect Rotation",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "71",
-    "title": "Point of Impact",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 174,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Point_of_Impact.mp3",
     "coverUrl": "/audio/thumbnails/Point_of_Impact.jpg",
+    "title": "Point of Impact",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 174,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 87,
-        "text": "Thank you very much for watching!"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "72",
-    "title": "Poise in the Frame",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Poise_in_the_Frame.mp3",
     "coverUrl": "/audio/thumbnails/Poise_in_the_Frame.jpg",
+    "title": "Poise in the Frame",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -2226,40 +2048,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "73",
-    "title": "Protocol Termination",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 174,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Protocol_Termination.mp3",
     "coverUrl": "/audio/thumbnails/Protocol_Termination.jpg",
+    "title": "Protocol Termination",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 174,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 87,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "74",
-    "title": "Relentless Collapse",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Relentless_Collapse.mp3",
     "coverUrl": "/audio/thumbnails/Relentless_Collapse.jpg",
+    "title": "Relentless Collapse",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 22.1,
@@ -2292,61 +2109,51 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "75",
-    "title": "Saltwater Shelter",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 172,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Saltwater_Shelter.mp3",
     "coverUrl": "/audio/thumbnails/Saltwater_Shelter.jpg",
+    "title": "Saltwater Shelter",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 172,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 86,
-        "text": "Thank you very much for watching."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "76",
-    "title": "Severed Power Lines",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Severed_Power_Lines.mp3",
     "coverUrl": "/audio/thumbnails/Severed_Power_Lines.jpg",
+    "title": "Severed Power Lines",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 88,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "77",
-    "title": "Slipping Like Mercury",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Slipping_Like_Mercury.mp3",
     "coverUrl": "/audio/thumbnails/Slipping_Like_Mercury.jpg",
+    "title": "Slipping Like Mercury",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -2367,61 +2174,51 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "78",
-    "title": "Slow Sunday Window",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Slow_Sunday_Window.mp3",
     "coverUrl": "/audio/thumbnails/Slow_Sunday_Window.jpg",
+    "title": "Slow Sunday Window",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "79",
-    "title": "Submerged Geometry",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Submerged_Geometry.mp3",
     "coverUrl": "/audio/thumbnails/Submerged_Geometry.jpg",
+    "title": "Submerged Geometry",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "80",
-    "title": "Systemic Entropy",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 180,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Systemic_Entropy.mp3",
     "coverUrl": "/audio/thumbnails/Systemic_Entropy.jpg",
+    "title": "Systemic Entropy",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 180,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -2442,40 +2239,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "81",
-    "title": "Terminal Ascent",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 174,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Terminal_Ascent.mp3",
     "coverUrl": "/audio/thumbnails/Terminal_Ascent.jpg",
+    "title": "Terminal Ascent",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 174,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 87,
-        "text": "Thank you very much for watching this video and I'll see you in the next video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "82",
-    "title": "Terminal Overload",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 172,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Terminal_Overload.mp3",
     "coverUrl": "/audio/thumbnails/Terminal_Overload.jpg",
+    "title": "Terminal Overload",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 172,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 24.6,
@@ -2504,44 +2296,39 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "83",
-    "title": "Terminal Protocol",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Terminal_Protocol.mp3",
     "coverUrl": "/audio/thumbnails/Terminal_Protocol.jpg",
+    "title": "Terminal Protocol",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 87.5,
-        "text": "Thank you very much."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "84",
-    "title": "The Archer’s Aim",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 178,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Archer’s_Aim.mp3",
     "coverUrl": "/audio/thumbnails/The_Archer’s_Aim.jpg",
+    "title": "The Archer’s Aim",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 178,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
-        "text": "Music Music Music Trackjack, ready set for the distant peak The list of T rising as the patterns peak We're text aligned in a vertical line Logic of flow in a master design For side as fire, the Jupiter's bark Illuminating the geometric dark Archery sharp in the minds in a rye Watch the horizon as the pieces fly Sagittarius find the alignment"
+        "text": "Music Trackjack, ready set for the distant peak The list of T rising as the patterns peak We're text aligned in a vertical line Logic of flow in a master design For side as fire, the Jupiter's bark Illuminating the geometric dark Archery sharp in the minds in a rye Watch the horizon as the pieces fly Sagittarius find the alignment"
       },
       {
         "time": 51,
@@ -2558,23 +2345,23 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "85",
-    "title": "The Center Pulls",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Center_Pulls.mp3",
     "coverUrl": "/audio/thumbnails/The_Center_Pulls.jpg",
+    "title": "The Center Pulls",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
-        "text": "Music And if you are drifting, silent alignment Cold light traces Cold light traces The edge of the dark"
+        "text": "And if you are drifting, silent alignment Cold light traces Cold light traces The edge of the dark"
       },
       {
         "time": 61,
@@ -2591,19 +2378,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "86",
-    "title": "The Final Alignment",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Final_Alignment.mp3",
     "coverUrl": "/audio/thumbnails/The_Final_Alignment.jpg",
+    "title": "The Final Alignment",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 24.7,
@@ -2632,19 +2419,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "87",
-    "title": "The Final Arc",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Final_Arc.mp3",
     "coverUrl": "/audio/thumbnails/The_Final_Arc.jpg",
+    "title": "The Final Arc",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -2665,174 +2452,131 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "88",
-    "title": "The Final Ascent",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Final_Ascent.mp3",
     "coverUrl": "/audio/thumbnails/The_Final_Ascent.jpg",
+    "title": "The Final Ascent",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "You"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "89",
-    "title": "The Final Column",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 172,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Final_Column.mp3",
     "coverUrl": "/audio/thumbnails/The_Final_Column.jpg",
+    "title": "The Final Column",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 172,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 86,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "90",
-    "title": "The Last Column",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 174,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Last_Column.mp3",
     "coverUrl": "/audio/thumbnails/The_Last_Column.jpg",
+    "title": "The Last Column",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 174,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 58,
-        "text": "Thank you very much for watching this video, see you in the next video."
-      },
-      {
-        "time": 116,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "91",
-    "title": "The Last Column old",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Last_Column_old.mp3",
     "coverUrl": "/audio/thumbnails/The_Last_Column_old.jpg",
+    "title": "The Last Column old",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 59,
-        "text": "Thank you."
-      },
-      {
-        "time": 118,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "92",
-    "title": "The Last Hydraulic",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Last_Hydraulic.mp3",
     "coverUrl": "/audio/thumbnails/The_Last_Hydraulic.jpg",
+    "title": "The Last Hydraulic",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 87.5,
-        "text": "."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "93",
-    "title": "The Last Key",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Last_Key.mp3",
     "coverUrl": "/audio/thumbnails/The_Last_Key.jpg",
+    "title": "The Last Key",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "I will see you in the next video!"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "94",
-    "title": "The Last Level",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Last_Level.mp3",
     "coverUrl": "/audio/thumbnails/The_Last_Level.jpg",
+    "title": "The Last Level",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 86.5,
-        "text": "Thank you so much for watching this video and I'll see you in the next video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "95",
-    "title": "The Last Orbit",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Last_Orbit.mp3",
     "coverUrl": "/audio/thumbnails/The_Last_Orbit.jpg",
+    "title": "The Last Orbit",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 6,
@@ -2853,40 +2597,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "96",
-    "title": "The Last Rotation",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Last_Rotation.mp3",
     "coverUrl": "/audio/thumbnails/The_Last_Rotation.jpg",
+    "title": "The Last Rotation",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 86.5,
-        "text": "Thank you so much for watching this video and I hope you enjoyed this video and don't forget to subscribe to this channel and press the bell icon to not miss any new videos."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "97",
-    "title": "The Loop Resolves",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 170,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Loop_Resolves.mp3",
     "coverUrl": "/audio/thumbnails/The_Loop_Resolves.jpg",
+    "title": "The Loop Resolves",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 170,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -2907,44 +2646,39 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "98",
-    "title": "The Seventh Pulse",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Seventh_Pulse.mp3",
     "coverUrl": "/audio/thumbnails/The_Seventh_Pulse.jpg",
+    "title": "The Seventh Pulse",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 88,
-        "text": "Thank you."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "99",
-    "title": "The Silver Current",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 172,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Silver_Current.mp3",
     "coverUrl": "/audio/thumbnails/The_Silver_Current.jpg",
+    "title": "The Silver Current",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 172,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
-        "text": "Music Walking through the lunar light Garding all the dreams tonight Soft beneath the shell I keep While the world is fast asleep Feel the pull the heavy draw Bound by nature's ancient lore Into which shun is the map Falling into rhythm's lap"
+        "text": "Walking through the lunar light Garding all the dreams tonight Soft beneath the shell I keep While the world is fast asleep Feel the pull the heavy draw Bound by nature's ancient lore Into which shun is the map Falling into rhythm's lap"
       },
       {
         "time": 51.5,
@@ -2961,19 +2695,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "100",
-    "title": "The Sting Is The Key",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 172,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Sting_Is_The_Key.mp3",
     "coverUrl": "/audio/thumbnails/The_Sting_Is_The_Key.jpg",
+    "title": "The Sting Is The Key",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 172,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -2994,44 +2728,39 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "101",
-    "title": "The th Coil",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_th_Coil.mp3",
     "coverUrl": "/audio/thumbnails/The_th_Coil.jpg",
+    "title": "The th Coil",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "Music"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "102",
-    "title": "The Velvet Blue",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 171,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Velvet_Blue.mp3",
     "coverUrl": "/audio/thumbnails/The_Velvet_Blue.jpg",
+    "title": "The Velvet Blue",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 171,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
-        "text": "Music Orbiting the edge of light Car within the endless night Patterns forming in the void Silence where the stars deployed"
+        "text": "Orbiting the edge of light Car within the endless night Patterns forming in the void Silence where the stars deployed"
       },
       {
         "time": 50,
@@ -3048,19 +2777,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "103",
-    "title": "The Venusian Flow",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Venusian_Flow.mp3",
     "coverUrl": "/audio/thumbnails/The_Venusian_Flow.jpg",
+    "title": "The Venusian Flow",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -3081,40 +2810,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "104",
-    "title": "The View From Orbit",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 171,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_View_From_Orbit.mp3",
     "coverUrl": "/audio/thumbnails/The_View_From_Orbit.jpg",
+    "title": "The View From Orbit",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 171,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 85.5,
-        "text": "Thank you very much for watching this video and I hope you enjoyed this video and I'll see you in the next video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "105",
-    "title": "The Waterbearer",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Waterbearer.mp3",
     "coverUrl": "/audio/thumbnails/The_Waterbearer.jpg",
+    "title": "The Waterbearer",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -3135,61 +2859,51 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "106",
-    "title": "The Winning Move",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/The_Winning_Move.mp3",
     "coverUrl": "/audio/thumbnails/The_Winning_Move.jpg",
+    "title": "The Winning Move",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "Thank you for watching this video and I'll see you in the next video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "107",
-    "title": "Thermal Throttling",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 182,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Thermal_Throttling.mp3",
     "coverUrl": "/audio/thumbnails/Thermal_Throttling.jpg",
+    "title": "Thermal Throttling",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 182,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 91,
-        "text": "."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "108",
-    "title": "Thirteenth Ascent",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Thirteenth_Ascent.mp3",
     "coverUrl": "/audio/thumbnails/Thirteenth_Ascent.jpg",
+    "title": "Thirteenth Ascent",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 15,
@@ -3198,19 +2912,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "109",
-    "title": "Thirteenth Constellation",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Thirteenth_Constellation.mp3",
     "coverUrl": "/audio/thumbnails/Thirteenth_Constellation.jpg",
+    "title": "Thirteenth Constellation",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -3231,19 +2945,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "110",
-    "title": "Tidal Pulse",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 178,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Tidal_Pulse.mp3",
     "coverUrl": "/audio/thumbnails/Tidal_Pulse.jpg",
+    "title": "Tidal Pulse",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 178,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -3264,23 +2978,23 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "111",
-    "title": "Time Is A Liquid",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Time_Is_A_Liquid.mp3",
     "coverUrl": "/audio/thumbnails/Time_Is_A_Liquid.jpg",
+    "title": "Time Is A Liquid",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
-        "text": "Music We had just solved in the time, in the time Time is a liquid we hide inside, inside"
+        "text": "We had just solved in the time, in the time Time is a liquid we hide inside, inside"
       },
       {
         "time": 53,
@@ -3297,19 +3011,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "112",
-    "title": "Titanium Weight",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 174,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Titanium_Weight.mp3",
     "coverUrl": "/audio/thumbnails/Titanium_Weight.jpg",
+    "title": "Titanium Weight",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 174,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 24.9,
@@ -3338,86 +3052,67 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "113",
-    "title": "Top Of The Table",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Top_Of_The_Table.mp3",
     "coverUrl": "/audio/thumbnails/Top_Of_The_Table.jpg",
+    "title": "Top Of The Table",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 88,
-        "text": "Thank you very much for watching this video and I hope to see you in the next video and see you in the next video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "114",
-    "title": "Top Row Velocity",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 174,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Top_Row_Velocity.mp3",
     "coverUrl": "/audio/thumbnails/Top_Row_Velocity.jpg",
+    "title": "Top Row Velocity",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 174,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 58,
-        "text": "Thank you."
-      },
-      {
-        "time": 116,
-        "text": "Thank you so much for watching this video, don't forget to like, share, and subscribe to our channel."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "115",
-    "title": "Turbo Jump",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 30,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Turbo_Jump.mp3",
     "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80",
+    "title": "Turbo Jump",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 30,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 15,
-        "text": "music"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "116",
-    "title": "Ultra Mind",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 176,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Ultra_Mind.mp3",
     "coverUrl": "/audio/thumbnails/Ultra_Mind.jpg",
+    "title": "Ultra Mind",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 176,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -3438,19 +3133,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "117",
-    "title": "Under The Heavy Anvil",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 174,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Under_The_Heavy_Anvil.mp3",
     "coverUrl": "/audio/thumbnails/Under_The_Heavy_Anvil.jpg",
+    "title": "Under The Heavy Anvil",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 174,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 24.9,
@@ -3479,82 +3174,67 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "118",
-    "title": "Unscheduled Shutdown",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 170,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Unscheduled_Shutdown.mp3",
     "coverUrl": "/audio/thumbnails/Unscheduled_Shutdown.jpg",
+    "title": "Unscheduled Shutdown",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 170,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 85,
-        "text": "Thank you very much."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "119",
-    "title": "Velocity Of A Cloud",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 125,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Velocity_Of_A_Cloud.mp3",
     "coverUrl": "/audio/thumbnails/Velocity_Of_A_Cloud.jpg",
+    "title": "Velocity Of A Cloud",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 125,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 62.5,
-        "text": "music"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "120",
-    "title": "Velocity Spike",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Velocity_Spike.mp3",
     "coverUrl": "/audio/thumbnails/Velocity_Spike.jpg",
+    "title": "Velocity Spike",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 86.5,
-        "text": "music"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "121",
-    "title": "Vertical Flow",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Vertical_Flow.mp3",
     "coverUrl": "/audio/thumbnails/Vertical_Flow.jpg",
+    "title": "Vertical Flow",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 30,
@@ -3575,40 +3255,35 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "122",
-    "title": "Weight of the Hammer",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 179,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Weight_of_the_Hammer.mp3",
     "coverUrl": "/audio/thumbnails/Weight_of_the_Hammer.jpg",
+    "title": "Weight of the Hammer",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 179,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 89.5,
-        "text": "Thank you so much for watching this video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "123",
-    "title": "Weightless Ascent",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 175,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Weightless_Ascent.mp3",
     "coverUrl": "/audio/thumbnails/Weightless_Ascent.jpg",
+    "title": "Weightless Ascent",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 175,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -3629,19 +3304,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "124",
-    "title": "Where Shadows Grow",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 177,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Where_Shadows_Grow.mp3",
     "coverUrl": "/audio/thumbnails/Where_Shadows_Grow.jpg",
+    "title": "Where Shadows Grow",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 177,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,
@@ -3662,61 +3337,51 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "125",
-    "title": "Where Stones Become Streams",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Where_Stones_Become_Streams.mp3",
     "coverUrl": "/audio/thumbnails/Where_Stones_Become_Streams.jpg",
+    "title": "Where Stones Become Streams",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 86.5,
-        "text": "Thank you very much for watching this video and I'll see you in the next video."
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "126",
-    "title": "White Hot Velocity",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 173,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/White_Hot_Velocity.mp3",
     "coverUrl": "/audio/thumbnails/White_Hot_Velocity.jpg",
+    "title": "White Hot Velocity",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 173,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
-    "lyrics": [
-      {
-        "time": 86.5,
-        "text": "Music"
-      }
-    ]
+    "artist": "Anuraag Rao",
+    "lyrics": []
   },
   {
+    "isPublic": true,
     "id": "127",
-    "title": "YTDown YouTube OIIAOIIA-CAT-but-in-4K-Not-Actually Media ZHgyQGoeaB0 009 128k",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 12,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/YTDown_YouTube_OIIAOIIA-CAT-but-in-4K-Not-Actually_Media_ZHgyQGoeaB0_009_128k.mp3",
     "coverUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80",
+    "title": "YTDown YouTube OIIAOIIA-CAT-but-in-4K-Not-Actually Media ZHgyQGoeaB0 009 128k",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 12,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 2.4,
@@ -3737,19 +3402,19 @@ export const defaultTracks: Track[] = [
     ]
   },
   {
+    "isPublic": true,
     "id": "128",
-    "title": "Zero Margin",
-    "artist": "Anuraag Rao",
-    "album": "Tetra Overflow Ultra",
-    "duration": 172,
+    "upvotesCount": 0,
     "audioUrl": "/audio/mp3/Zero_Margin.mp3",
     "coverUrl": "/audio/thumbnails/Zero_Margin.jpg",
+    "title": "Zero Margin",
+    "album": "Tetra Overflow Ultra",
     "ownerId": "public",
-    "isPublic": true,
-    "lyricsStatus": "pending",
-    "upvotesCount": 0,
+    "duration": 172,
     "downvotesCount": 0,
+    "lyricsStatus": "pending",
     "netScore": 0,
+    "artist": "Anuraag Rao",
     "lyrics": [
       {
         "time": 0,

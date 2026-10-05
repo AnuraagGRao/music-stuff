@@ -15,7 +15,7 @@ import { useFirebaseMusic } from './hooks/useFirebaseMusic'
 import { useAudioStore } from './store/audioStore'
 import { useSeedDatabase } from './hooks/useSeedDatabase'
 import { useLoadManifest } from './hooks/useLoadManifest'
-import { useLyricsExtraction } from './hooks/useLyricsExtraction'
+import { isInstrumentalTrack } from './lib/lyricsUtils'
 import { useTheme } from './hooks/useTheme'
 
 type FilterCategory = 'all' | 'favorites' | 'uploads' | 'instrumental'
@@ -25,9 +25,6 @@ function App() {
 
   // Load tracks from manifest as dynamic sync
   useLoadManifest()
-
-  // Extract lyrics for all tracks
-  useLyricsExtraction()
 
   // Firestore seeding for cloud persistence
   useSeedDatabase()
@@ -89,7 +86,8 @@ function App() {
       // Category chip filter
       if (activeFilter === 'favorites' && !favorites.includes(track.id)) return false
       if (activeFilter === 'uploads' && track.ownerId === 'public') return false
-      if (activeFilter === 'instrumental' && track.lyrics && track.lyrics.length > 0) return false
+      const isTrackInstrumental = !track.lyrics || track.lyrics.length === 0 || isInstrumentalTrack(track.lyrics)
+      if (activeFilter === 'instrumental' && !isTrackInstrumental) return false
 
       // Search query
       if (search.trim()) {
@@ -447,7 +445,12 @@ function App() {
                     Live Lyrics
                   </h2>
                 </div>
-                <LyricsView lyrics={currentTrack.lyrics || []} currentTime={currentTime} />
+                <LyricsView
+                  lyrics={currentTrack.lyrics || []}
+                  currentTime={currentTime}
+                  onSeek={seek}
+                  size="normal"
+                />
               </div>
             </section>
           </main>

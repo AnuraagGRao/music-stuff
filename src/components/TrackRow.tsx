@@ -2,6 +2,7 @@ import { Heart, Play, Pause, Music, Mic2 } from 'lucide-react'
 import { VotingButtons } from './VotingButtons'
 import { PlaylistSelector } from './PlaylistSelector'
 import type { Track } from '../types'
+import { isInstrumentalTrack } from '../lib/lyricsUtils'
 
 type TrackRowProps = {
   track: Track
@@ -29,7 +30,8 @@ export function TrackRow({
   onToggleFavorite,
   onAuthRequired,
 }: TrackRowProps) {
-  const hasLyrics = track.lyrics && track.lyrics.length > 0
+  const isInstrumental = !track.lyrics || track.lyrics.length === 0 || isInstrumentalTrack(track.lyrics)
+  const hasLyrics = !isInstrumental
 
   return (
     <div
