@@ -1,13 +1,14 @@
+import React from 'react'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { VotingButtons } from '../src/components/VotingButtons'
-import { PlaylistSelector } from '../src/components/PlaylistSelector'
-import { CreatePlaylistModal } from '../src/components/CreatePlaylistModal'
-import type { Track } from '../src/types'
+import { VotingButtons } from '../components/VotingButtons'
+import { PlaylistSelector } from '../components/PlaylistSelector'
+import { CreatePlaylistModal } from '../components/CreatePlaylistModal'
+import type { Track } from '../types'
 
 // Mock hooks
-vi.mock('../src/hooks/useVoting', () => ({
+vi.mock('../hooks/useVoting', () => ({
   useVoting: () => ({
     toggleVote: vi.fn(),
     getUserVote: () => null,
@@ -16,7 +17,7 @@ vi.mock('../src/hooks/useVoting', () => ({
   }),
 }))
 
-vi.mock('../src/hooks/usePlaylists', () => ({
+vi.mock('../hooks/usePlaylists', () => ({
   usePlaylists: () => ({
     playlists: [
       { id: 'p1', name: 'My Playlist', trackIds: [], createdBy: 'user-1', isPublic: false },
@@ -254,7 +255,7 @@ describe('Component Integration', () => {
   it('should support voting on a track', () => {
     render(<VotingButtons track={mockTrack} />)
 
-    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getAllByRole('button')).toHaveLength(2)
   })
 
   it('should support adding track to playlist', () => {
@@ -280,8 +281,8 @@ describe('Component Integration', () => {
       </>,
     )
 
-    // All components should render
-    expect(screen.getAllByRole('button')).toHaveLength(2) // One for voting, one for playlist
+    // All components should render (2 for voting, 1 for playlist)
+    expect(screen.getAllByRole('button')).toHaveLength(3)
 
     // Rerender with modal open
     rerender(

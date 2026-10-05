@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderHook, act, waitFor } from '@testing-library/react'
-import { useAudioPlayer } from '../src/hooks/useAudioPlayer'
-import { useAudioStore } from '../src/store/audioStore'
+import { useAudioPlayer } from '../hooks/useAudioPlayer'
+import { useAudioStore } from '../store/audioStore'
 
 // Mock FastAverageColor
 vi.mock('fast-average-color', () => ({

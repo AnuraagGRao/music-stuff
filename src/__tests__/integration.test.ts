@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { renderHook, act, waitFor } from '@testing-library/react'
-import { useAudioStore } from '../src/store/audioStore'
-import { useFirebaseMusic } from '../src/hooks/useFirebaseMusic'
+import { useAudioStore } from '../store/audioStore'
+import { useFirebaseMusic } from '../hooks/useFirebaseMusic'
 
 // Mock Firebase Auth
 vi.mock('firebase/auth', () => ({

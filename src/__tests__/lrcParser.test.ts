@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parseLRC, findActiveLyricIndex, toLRC } from '../src/lib/lrcParser'
+import { parseLRC, findActiveLyricIndex, toLRC } from '../lib/lrcParser'
 
 describe('LRC Parser', () => {
   const sampleLRC = `[00:00.00]City lights are moving slow

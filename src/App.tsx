@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Search } from 'lucide-react'
 import { LyricsView } from './components/LyricsView'
 import { Player } from './components/Player'
@@ -75,9 +75,55 @@ function App() {
     }
   }
 
+  // Keyboard hotkeys
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement ||
+        (e.target as HTMLElement)?.isContentEditable
+      ) {
+        return
+      }
+
+      if (e.code === 'Space') {
+        e.preventDefault()
+        setIsPlaying(!isPlaying)
+      } else if (e.code === 'ArrowRight' && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault()
+        seek(Math.min(duration, currentTime + 5))
+      } else if (e.code === 'ArrowLeft' && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault()
+        seek(Math.max(0, currentTime - 5))
+      } else if (e.key === 'j' || e.key === 'J' || e.key === '[') {
+        e.preventDefault()
+        playPrevious()
+      } else if (e.key === 'l' || e.key === 'L' || e.key === ']') {
+        e.preventDefault()
+        playNext()
+      } else if (e.key === 'm' || e.key === 'M') {
+        e.preventDefault()
+        setVolume(volume > 0 ? 0 : 0.8)
+      } else if (e.key === 'f' || e.key === 'F') {
+        e.preventDefault()
+        setFullscreenPlayer((prev) => !prev)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isPlaying, setIsPlaying, currentTime, duration, seek, playPrevious, playNext, volume, setVolume])
+
   try {
     if (!currentTrack) {
-      return <div className="p-6 text-white">No tracks available.</div>
+      return (
+        <div className="min-h-screen bg-[#0F1011] text-[#ECEDEE] flex items-center justify-center p-6">
+          <div className="flex flex-col items-center gap-3">
+            <div className="size-8 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
+            <span className="text-xs font-mono tracking-widest uppercase text-slate-400">Loading Audio Stream...</span>
+          </div>
+        </div>
+      )
     }
 
     return (
@@ -181,25 +227,24 @@ function App() {
           </main>
         </div>
 
-        <div onClick={() => setFullscreenPlayer(true)} className="cursor-pointer">
-          <Player
-            track={currentTrack}
-            isPlaying={isPlaying}
-            onTogglePlay={() => setIsPlaying(!isPlaying)}
-            onNext={playNext}
-            onPrevious={playPrevious}
-            onShuffle={toggleShuffle}
-            onRepeat={cycleRepeat}
-            onVolumeChange={setVolume}
-            onSeek={seek}
-            volume={volume}
-            currentTime={currentTime}
-            duration={duration}
-            accentColor={accentColor}
-            shuffled={shuffled}
-            repeatMode={repeatMode}
-          />
-        </div>
+        <Player
+          track={currentTrack}
+          isPlaying={isPlaying}
+          onTogglePlay={() => setIsPlaying(!isPlaying)}
+          onNext={playNext}
+          onPrevious={playPrevious}
+          onShuffle={toggleShuffle}
+          onRepeat={cycleRepeat}
+          onVolumeChange={setVolume}
+          onSeek={seek}
+          volume={volume}
+          currentTime={currentTime}
+          duration={duration}
+          accentColor={accentColor}
+          shuffled={shuffled}
+          repeatMode={repeatMode}
+          onExpand={() => setFullscreenPlayer(true)}
+        />
 
         {fullscreenPlayer && (
           <FullPlayer

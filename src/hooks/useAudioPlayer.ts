@@ -3,7 +3,12 @@ import { FastAverageColor } from 'fast-average-color'
 import { useAudioStore } from '../store/audioStore'
 
 export function useAudioPlayer() {
-  const audioRef = useRef<HTMLAudioElement>(new Audio())
+  const audioRef = useRef<HTMLAudioElement>(null as unknown as HTMLAudioElement)
+  if (!audioRef.current) {
+    const el = new Audio()
+    el.crossOrigin = 'anonymous'
+    audioRef.current = el
+  }
   const facRef = useRef(new FastAverageColor())
   const [accentColor, setAccentColor] = useState('rgba(124, 58, 237, 0.9)')
   const [error, setError] = useState<string | null>(null)
@@ -144,6 +149,11 @@ export function useAudioPlayer() {
       lastReportedTime = 0
       setCurrentTime(0)
       if (rafId !== null) cancelAnimationFrame(rafId)
+      if (repeatMode === 'one') {
+        audio.currentTime = 0
+        audio.play().catch(console.error)
+        return
+      }
       playNext()
     }
 
@@ -177,7 +187,7 @@ export function useAudioPlayer() {
       audio.removeEventListener('ended', onEnded)
       audio.removeEventListener('error', onError)
     }
-  }, [playNext])
+  }, [playNext, repeatMode])
 
   const duration = currentTrack?.duration ?? 0
 

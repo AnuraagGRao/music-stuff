@@ -9,6 +9,29 @@ interface AudioVisualizerProps {
   className?: string;
 }
 
+// Global WeakMap to guarantee createMediaElementSource is called exactly once per audio element
+const audioNodeMap = new WeakMap<
+  HTMLAudioElement,
+  { ctx: AudioContext; analyser: AnalyserNode; source: MediaElementAudioSourceNode }
+>();
+
+function getOrCreateAudioNodes(element: HTMLAudioElement) {
+  if (audioNodeMap.has(element)) {
+    return audioNodeMap.get(element)!;
+  }
+  const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+  if (!AudioCtx) return null;
+  const ctx = new AudioCtx();
+  const analyser = ctx.createAnalyser();
+  analyser.fftSize = 256;
+  const source = ctx.createMediaElementSource(element);
+  source.connect(analyser);
+  analyser.connect(ctx.destination);
+  const nodes = { ctx, analyser, source };
+  audioNodeMap.set(element, nodes);
+  return nodes;
+}
+
 export default function AudioVisualizer({
   audioElement,
   isPlaying,
@@ -21,30 +44,22 @@ export default function AudioVisualizer({
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
   const animationRef = useRef<number | undefined>(undefined);
 
-  // Initialize audio context and analyser
+  // Initialize audio context and analyser safely without re-creating nodes
   useEffect(() => {
     if (!audioElement) return;
 
     try {
-      const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
-      const analyserNode = ctx.createAnalyser();
-      analyserNode.fftSize = 256;
-      
-      const source = ctx.createMediaElementSource(audioElement);
-      source.connect(analyserNode);
-      analyserNode.connect(ctx.destination);
-
-      setAnalyser(analyserNode);
-
-      return () => {
-        source.disconnect();
-        analyserNode.disconnect();
-        ctx.close();
-      };
+      const nodes = getOrCreateAudioNodes(audioElement);
+      if (nodes) {
+        if (nodes.ctx.state === 'suspended' && isPlaying) {
+          nodes.ctx.resume().catch(() => {});
+        }
+        setAnalyser(nodes.analyser);
+      }
     } catch (error) {
       console.warn('Audio visualization not supported:', error);
     }
-  }, [audioElement]);
+  }, [audioElement, isPlaying]);
 
   // Animation loop
   useEffect(() => {

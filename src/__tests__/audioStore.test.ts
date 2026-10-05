@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { useAudioStore } from '../src/store/audioStore'
+import { useAudioStore } from '../store/audioStore'
 
 describe('Audio Store', () => {
   beforeEach(() => {

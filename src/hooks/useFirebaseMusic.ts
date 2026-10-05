@@ -125,14 +125,14 @@ export function useFirebaseMusic() {
   }
 
   const uploadTrack = async (file: File, metadata?: Partial<Track>) => {
-    if (!user) {
-      setError('Sign in required to upload tracks')
-      throw new Error('Sign in required')
-    }
-
     if (!file.type.startsWith('audio/')) {
       setError('Invalid file type. Please upload an audio file.')
       throw new Error('Invalid file type')
+    }
+
+    if (!user) {
+      setError('Sign in required to upload tracks')
+      throw new Error('Sign in required')
     }
 
     setIsUploading(true)

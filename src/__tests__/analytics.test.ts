@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
-import { useAnalytics } from '../src/hooks/useAnalytics'
-import { useVoting } from '../src/hooks/useVoting'
-import { usePlaylists } from '../src/hooks/usePlaylists'
+import { useAnalytics } from '../hooks/useAnalytics'
+import { useVoting } from '../hooks/useVoting'
+import { usePlaylists } from '../hooks/usePlaylists'
 
 // Mock Firebase
 vi.mock('firebase/firestore', async () => ({
@@ -25,7 +25,7 @@ vi.mock('firebase/auth', () => ({
   getAuth: vi.fn(),
 }))
 
-vi.mock('../src/lib/firebase', () => ({
+vi.mock('../lib/firebase', () => ({
   auth: { currentUser: { uid: 'test-user-123' } },
   db: {},
 }))
