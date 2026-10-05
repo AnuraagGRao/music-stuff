@@ -16,7 +16,12 @@ export function Sidebar({ onCreatePlaylistClick }: SidebarProps) {
 
   return (
     <aside className="glass-panel hidden h-full w-64 shrink-0 p-4 lg:flex lg:flex-col">
-      <h1 className="mb-6 text-xl font-semibold text-white">Music For All</h1>
+      <div className="mb-6">
+        <span className="text-[0.68rem] font-bold tracking-[0.14em] uppercase text-[#889096] font-mono block">
+          Navigation
+        </span>
+        <h1 className="text-2xl font-semibold text-white font-serif tracking-tight mt-0.5">Music For All</h1>
+      </div>
 
       <nav className="space-y-2 mb-6">
         {navItems.map(({ label, icon: Icon }) => (

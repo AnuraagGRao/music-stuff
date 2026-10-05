@@ -82,7 +82,7 @@ function App() {
 
     return (
       <div
-        className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-black text-slate-100"
+        className="min-h-screen bg-[#0F1011] text-[#ECEDEE]"
         data-theme={theme}
       >
         <div className="mx-auto flex max-w-7xl gap-4 p-3 pb-28 lg:p-6 lg:pb-32">
@@ -93,7 +93,7 @@ function App() {
               <div className="relative flex-1">
                 <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
                 <input
-                  className="w-full rounded-lg border border-white/10 bg-black/20 py-2 pl-9 pr-3 text-sm text-white outline-none ring-indigo-400/60 placeholder:text-slate-500 focus:ring"
+                  className="w-full rounded-full border border-[#2C2E31] bg-[#141516] py-2 pl-9 pr-3 text-sm text-[#ECEDEE] outline-none ring-0 placeholder:text-[#63676B] focus:border-[#3D4044] transition-colors"
                   placeholder="Search tracks, artists, albums..."
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
@@ -103,14 +103,14 @@ function App() {
                 <ThemeSwitcher />
                 <a
                   href="https://anuraaggrao.com/"
-                  className="text-xs text-slate-400 hover:text-slate-300 transition-colors"
+                  className="text-[0.75rem] font-mono uppercase tracking-wider text-slate-400 hover:text-white px-3 py-1.5 rounded-full border border-[#2C2E31] bg-[#141516] transition-colors"
                   title="Back to portfolio"
                 >
                   Portfolio
                 </a>
                 <button
                   type="button"
-                  className="rounded-lg bg-indigo-500 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-400"
+                  className="rounded-full bg-[#ECEDEE] px-4 py-2 text-sm font-medium text-[#0F1011] hover:opacity-90 font-mono text-xs transition"
                   onClick={() => (isAuthenticated ? logout() : loginWithGoogle())}
                 >
                   {isAuthenticated ? 'Sign out' : 'Sign in with Google'}
@@ -120,7 +120,14 @@ function App() {
 
             <section className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_300px]">
               <div className="glass-panel space-y-3 p-4">
-                <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-300">Music Library</h2>
+                <div>
+                  <span className="text-[0.68rem] font-bold tracking-[0.14em] uppercase text-[#889096] font-mono block">
+                    01 · Tracklist
+                  </span>
+                  <h2 className="text-xl font-semibold text-[#ECEDEE] font-serif tracking-tight mt-0.5">
+                    Music Library
+                  </h2>
+                </div>
                 {filteredTracks.length > 0 ? (
                   filteredTracks.map((track) => (
                     <TrackRow
@@ -159,8 +166,15 @@ function App() {
                   <p className="text-sm text-slate-400">Sign in to upload your music</p>
                 </div>
               )}
-              <div className="glass-panel h-72 overflow-y-auto p-4 rounded-lg border border-white/10">
-                <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-300">Live Lyrics</h2>
+              <div className="glass-panel h-72 overflow-y-auto p-4 rounded-lg">
+                <div className="mb-4">
+                  <span className="text-[0.68rem] font-bold tracking-[0.14em] uppercase text-[#889096] font-mono block">
+                    02 · Synchronization
+                  </span>
+                  <h2 className="text-xl font-semibold text-[#ECEDEE] font-serif tracking-tight mt-0.5">
+                    Live Lyrics
+                  </h2>
+                </div>
                 <LyricsView lyrics={currentTrack.lyrics || []} currentTime={currentTime} />
               </div>
             </section>

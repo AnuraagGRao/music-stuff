@@ -4,7 +4,7 @@ import * as Slider from '@radix-ui/react-slider'
 import { useAudioStore } from '../store/audioStore'
 import { LyricsView } from './LyricsView'
 import { isInstrumentalTrack } from '../lib/lyricsUtils'
-import { AudioVisualizer } from './AudioVisualizer'
+import AudioVisualizer from './AudioVisualizer'
 
 interface FullPlayerProps {
   onClose: () => void
