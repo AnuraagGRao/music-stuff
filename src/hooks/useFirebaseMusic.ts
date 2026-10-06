@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   GoogleAuthProvider,
   onAuthStateChanged,
@@ -11,9 +11,11 @@ import {
 import {
   addDoc,
   collection,
+  doc,
   onSnapshot,
   query,
   serverTimestamp,
+  setDoc,
   where,
   type DocumentReference,
 } from 'firebase/firestore'
@@ -35,11 +37,12 @@ export function useFirebaseMusic() {
   const [isUploading, setIsUploading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [userTracks, setUserTracks] = useState<Track[]>([])
+  const userProfileUnsubscribeRef = useRef<(() => void) | null>(null)
 
   const { setTracks, tracks, addTrack } = useAudioStore()
   const tracksCollection = useMemo(() => collection(db, 'tracks'), [])
 
-  // Listen to auth state changes and handle redirect auth result
+  // Listen to auth state changes and sync user plan from Firestore DB
   useEffect(() => {
     // Check redirect sign-in result (for mobile / popup-blocked fallbacks)
     getRedirectResult(auth)
@@ -59,12 +62,58 @@ export function useFirebaseMusic() {
       setUser(currentUser)
       setIsAuthenticated(!!currentUser)
       setIsAuthenticating(false)
+
+      if (userProfileUnsubscribeRef.current) {
+        userProfileUnsubscribeRef.current()
+        userProfileUnsubscribeRef.current = null
+      }
+
       if (currentUser) {
         setError(null)
+        // Real-time listener to Firestore users/{uid} document
+        const userDocRef = doc(db, 'users', currentUser.uid)
+        userProfileUnsubscribeRef.current = onSnapshot(
+          userDocRef,
+          (docSnap) => {
+            if (docSnap.exists()) {
+              const data = docSnap.data()
+              const isPro = data?.plan === 'pro' || data?.isPro === true
+              useAudioStore.getState().setUserPlan(isPro ? 'pro' : 'free')
+            } else {
+              // Seed initial user document in Firestore with 'free' tier
+              setDoc(
+                userDocRef,
+                {
+                  uid: currentUser.uid,
+                  email: currentUser.email || '',
+                  displayName: currentUser.displayName || '',
+                  photoURL: currentUser.photoURL || '',
+                  plan: 'free',
+                  createdAt: serverTimestamp(),
+                },
+                { merge: true },
+              ).catch((initErr) => {
+                console.warn('Could not initialize user document in Firestore:', initErr)
+              })
+              useAudioStore.getState().setUserPlan('free')
+            }
+          },
+          (profileErr) => {
+            console.warn('User profile listener notice:', profileErr)
+          },
+        )
+      } else {
+        useAudioStore.getState().setUserPlan('free')
       }
     })
 
-    return () => unsubscribe()
+    return () => {
+      unsubscribe()
+      if (userProfileUnsubscribeRef.current) {
+        userProfileUnsubscribeRef.current()
+        userProfileUnsubscribeRef.current = null
+      }
+    }
   }, [])
 
   // Listen to user's uploaded tracks
@@ -162,10 +211,15 @@ export function useFirebaseMusic() {
   const logout = async () => {
     try {
       setError(null)
+      if (userProfileUnsubscribeRef.current) {
+        userProfileUnsubscribeRef.current()
+        userProfileUnsubscribeRef.current = null
+      }
       await signOut(auth)
       setUser(null)
       setIsAuthenticated(false)
       setUserTracks([])
+      useAudioStore.getState().setUserPlan('free')
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Failed to sign out'
       setError(errorMsg)
@@ -255,8 +309,27 @@ export function useFirebaseMusic() {
         const storageRef = ref(storage, `audio/${user.uid}/${Date.now()}-${sanitizedName}`)
         const uploadTask: UploadTask = uploadBytesResumable(storageRef, file, { contentType })
 
-        // Track progress
+        // Track progress with an explicit 12-second timeout to abort hanging retries
         await new Promise<void>((resolve, reject) => {
+          let timeoutTimer: ReturnType<typeof setTimeout> | null = null
+
+          const cleanup = () => {
+            if (timeoutTimer) {
+              clearTimeout(timeoutTimer)
+              timeoutTimer = null
+            }
+          }
+
+          timeoutTimer = setTimeout(() => {
+            try {
+              uploadTask.cancel()
+            } catch {
+              // ignore cancel error
+            }
+            cleanup()
+            reject(new Error('Firebase Storage timeout: falling back to local audio stream'))
+          }, 12000)
+
           uploadTask.on(
             'state_changed',
             (snapshot) => {
@@ -266,8 +339,14 @@ export function useFirebaseMusic() {
                 [fileId]: Math.round(progress),
               }))
             },
-            reject,
-            resolve,
+            (error) => {
+              cleanup()
+              reject(error)
+            },
+            () => {
+              cleanup()
+              resolve()
+            },
           )
         })
 
@@ -291,6 +370,26 @@ export function useFirebaseMusic() {
       } catch (cloudErr) {
         console.warn('Firebase Cloud Storage fallback to local playable audio stream:', cloudErr)
         downloadURL = URL.createObjectURL(file)
+
+        // Attempt saving track document to Firestore so metadata persists
+        try {
+          const trackDoc: DocumentReference = await addDoc(tracksCollection, {
+            title: metadata?.title || file.name.replace(/\.[^/.]+$/, ''),
+            artist: metadata?.artist || user.displayName || 'Unknown Artist',
+            album: metadata?.album || 'My Uploads',
+            duration: duration,
+            audioUrl: downloadURL,
+            coverUrl: metadata?.coverUrl || user.photoURL || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&auto=format&fit=crop&q=80',
+            ownerId: user.uid,
+            isPublic: false,
+            lyricsStatus: 'pending',
+            lyrics: metadata?.lyrics || [],
+            createdAt: serverTimestamp(),
+          })
+          trackId = trackDoc.id
+        } catch {
+          // Keep local trackId if Firestore write also encounters an error
+        }
       }
 
       const newTrack: Track = {

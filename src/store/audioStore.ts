@@ -70,7 +70,7 @@ export const useAudioStore = create<AudioState>()(
       playedInShuffle: [],
       favorites: [],
       recentlyPlayed: [],
-      userPlan: 'pro',
+      userPlan: 'free',
       repeatMode: 'off',
       shuffled: false,
       volume: 0.8,

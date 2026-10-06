@@ -358,7 +358,11 @@ function App() {
                 <div className="flex items-start gap-2.5">
                   <AlertTriangle className="size-4 text-rose-400 shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-semibold text-rose-300">Authentication Notice</p>
+                    <p className="font-semibold text-rose-300">
+                      {authError.toLowerCase().includes('storage') || authError.toLowerCase().includes('upload')
+                        ? 'Storage & Upload Notice'
+                        : 'Authentication Notice'}
+                    </p>
                     <p className="text-rose-200/90 mt-0.5 leading-relaxed">{authError}</p>
                   </div>
                 </div>

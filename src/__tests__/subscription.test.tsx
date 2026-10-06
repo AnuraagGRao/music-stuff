@@ -9,7 +9,7 @@ import { PLAN_LIMITS, formatBytes, getPlanLimits } from '../utils/planLimits'
 describe('Subscription Model & Plan Limits', () => {
   beforeEach(() => {
     useAudioStore.setState({
-      userPlan: 'pro',
+      userPlan: 'free',
     })
   })
 
@@ -39,12 +39,12 @@ describe('Subscription Model & Plan Limits', () => {
   })
 
   describe('Audio Store Plan State', () => {
-    it('should default to pro plan', () => {
+    it('should default to free plan', () => {
       const state = useAudioStore.getState()
-      expect(state.userPlan).toBe('pro')
+      expect(state.userPlan).toBe('free')
     })
 
-    it('should allow setting plan state', () => {
+    it('should allow setting plan state from database user profile', () => {
       const store = useAudioStore.getState()
       store.setUserPlan('free')
       expect(useAudioStore.getState().userPlan).toBe('free')
