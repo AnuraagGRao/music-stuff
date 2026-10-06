@@ -1,4 +1,4 @@
-import { Heart, Library, Music2, Upload, Plus, LogOut, Disc3, Zap, Crown } from 'lucide-react'
+import { Heart, Library, Music2, Upload, Plus, LogOut, Disc3, Zap, Crown, X } from 'lucide-react'
 import { usePlaylists } from '../hooks/usePlaylists'
 import { useAudioStore } from '../store/audioStore'
 import type { User } from 'firebase/auth'
@@ -15,6 +15,8 @@ type SidebarProps = {
   favoritesCount?: number
   uploadsCount?: number
   onUpgradeClick?: () => void
+  isOpenMobile?: boolean
+  onCloseMobile?: () => void
 }
 
 export function Sidebar({
@@ -29,6 +31,8 @@ export function Sidebar({
   favoritesCount = 0,
   uploadsCount = 0,
   onUpgradeClick,
+  isOpenMobile = false,
+  onCloseMobile,
 }: SidebarProps) {
   const { playlists } = usePlaylists()
   const { userPlan } = useAudioStore()
@@ -39,12 +43,12 @@ export function Sidebar({
     { id: 'uploads' as const, label: 'My Uploads', icon: Upload, count: uploadsCount },
   ]
 
-  return (
-    <aside className="hidden h-full w-64 shrink-0 rounded-2xl border border-white/[0.08] bg-[#0c0d10]/90 backdrop-blur-xl p-4 lg:flex lg:flex-col justify-between shadow-2xl shadow-black/50">
-      <div>
+  const renderContent = (isMobile = false) => (
+    <div className="flex flex-col justify-between h-full min-h-0">
+      <div className="overflow-y-auto pr-1">
         {/* Brand Header */}
         <div className="mb-6 flex items-center gap-3 px-2">
-          <div className="size-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+          <div className="size-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-emerald-500/20 shrink-0">
             <Disc3 className="size-5 text-black" />
           </div>
           <div>
@@ -64,7 +68,10 @@ export function Sidebar({
             return (
               <button
                 key={id}
-                onClick={() => onSelectTab?.(id)}
+                onClick={() => {
+                  onSelectTab?.(id)
+                  if (isMobile) onCloseMobile?.()
+                }}
                 className={`flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-xs font-medium transition-all cursor-pointer ${
                   isActive
                     ? 'bg-white/[0.12] text-white border border-white/15 shadow-sm font-semibold'
@@ -106,7 +113,10 @@ export function Sidebar({
               </div>
               <button
                 type="button"
-                onClick={onCreatePlaylistClick}
+                onClick={() => {
+                  onCreatePlaylistClick?.()
+                  if (isMobile) onCloseMobile?.()
+                }}
                 className="rounded-lg p-1 hover:bg-white/10 text-slate-400 hover:text-white transition cursor-pointer"
                 title="Create new playlist"
               >
@@ -122,6 +132,9 @@ export function Sidebar({
                   <button
                     key={playlist.id}
                     type="button"
+                    onClick={() => {
+                      if (isMobile) onCloseMobile?.()
+                    }}
                     className="w-full text-left px-2.5 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] rounded-lg transition truncate cursor-pointer"
                     title={playlist.name}
                   >
@@ -135,7 +148,7 @@ export function Sidebar({
       </div>
 
       {/* User Profile / Auth Footer */}
-      <div className="border-t border-white/[0.08] pt-4 mt-auto">
+      <div className="border-t border-white/[0.08] pt-4 mt-auto shrink-0">
         {/* Subscription Plan Card */}
         {isAuthenticated && (
           <div className="mb-3">
@@ -154,7 +167,10 @@ export function Sidebar({
                 {onUpgradeClick && (
                   <button
                     type="button"
-                    onClick={onUpgradeClick}
+                    onClick={() => {
+                      onUpgradeClick()
+                      if (isMobile) onCloseMobile?.()
+                    }}
                     className="w-full py-1.5 px-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-bold transition shadow-sm cursor-pointer text-center flex items-center justify-center gap-1"
                   >
                     <Zap className="size-3 fill-black" />
@@ -181,7 +197,10 @@ export function Sidebar({
                 {onUpgradeClick && (
                   <button
                     type="button"
-                    onClick={onUpgradeClick}
+                    onClick={() => {
+                      onUpgradeClick()
+                      if (isMobile) onCloseMobile?.()
+                    }}
                     className="text-[0.7rem] text-emerald-400 hover:text-emerald-300 font-semibold underline underline-offset-2 cursor-pointer"
                   >
                     Manage
@@ -221,7 +240,10 @@ export function Sidebar({
               </div>
             </div>
             <button
-              onClick={onLogout}
+              onClick={() => {
+                onLogout?.()
+                if (isMobile) onCloseMobile?.()
+              }}
               className="p-1.5 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-colors cursor-pointer"
               title="Sign out"
             >
@@ -231,7 +253,10 @@ export function Sidebar({
         ) : (
           <button
             type="button"
-            onClick={onLogin}
+            onClick={() => {
+              onLogin?.()
+              if (isMobile) onCloseMobile?.()
+            }}
             disabled={isAuthenticating}
             className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-white text-black font-semibold text-xs transition-all hover:bg-white/90 active:scale-98 shadow-md shadow-white/10 cursor-pointer disabled:opacity-50"
           >
@@ -261,6 +286,42 @@ export function Sidebar({
           </button>
         )}
       </div>
-    </aside>
+    </div>
+  )
+
+  return (
+    <>
+      {/* Desktop Persistent Aside */}
+      <aside className="hidden h-full w-64 shrink-0 rounded-2xl border border-white/[0.08] bg-[#0c0d10]/90 backdrop-blur-xl p-4 lg:flex lg:flex-col justify-between shadow-2xl shadow-black/50">
+        {renderContent(false)}
+      </aside>
+
+      {/* Mobile Drawer Overlay */}
+      {isOpenMobile && (
+        <div className="fixed inset-0 z-50 flex lg:hidden">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity"
+            onClick={onCloseMobile}
+          />
+          {/* Sliding Panel */}
+          <aside className="relative w-72 max-w-[85vw] h-full bg-[#0c0d12] border-r border-white/10 p-4 flex flex-col justify-between shadow-2xl z-10 overflow-y-auto">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.08]">
+              <span className="text-[0.68rem] font-mono font-semibold uppercase tracking-wider text-emerald-400">
+                Menu & Playlists
+              </span>
+              <button
+                onClick={onCloseMobile}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition cursor-pointer"
+                title="Close Menu"
+              >
+                <X className="size-5" />
+              </button>
+            </div>
+            {renderContent(true)}
+          </aside>
+        </div>
+      )}
+    </>
   )
 }

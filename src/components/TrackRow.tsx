@@ -119,8 +119,10 @@ export function TrackRow({
         className="flex items-center gap-1 sm:gap-1.5 shrink-0"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Voting Buttons */}
-        <VotingButtons track={track} onAuthRequired={onAuthRequired} />
+        {/* Voting Buttons (Desktop & Tablet) */}
+        <div className="hidden sm:block">
+          <VotingButtons track={track} onAuthRequired={onAuthRequired} />
+        </div>
 
         {/* Favorite Button */}
         <button

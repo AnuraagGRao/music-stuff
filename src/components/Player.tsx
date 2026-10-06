@@ -308,41 +308,89 @@ export function Player({
       {/* ═══════════ MOBILE MINI-PLAYER BAR ═══════════ */}
       <div
         onClick={onExpand}
-        className="fixed inset-x-3 bottom-3 z-40 flex items-center justify-between gap-3 rounded-2xl bg-[#0e0f14]/95 border border-white/[0.1] p-2.5 shadow-2xl backdrop-blur-2xl md:hidden cursor-pointer"
+        className="fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-40 flex items-center justify-between gap-2.5 rounded-2xl bg-[#0e0f14]/95 border border-white/[0.12] p-2.5 shadow-2xl backdrop-blur-2xl md:hidden cursor-pointer select-none overflow-hidden group active:scale-[0.99] transition-transform"
       >
-        <div className="flex items-center gap-3 min-w-0 flex-1">
+        {/* Realtime Playback Progress Hairline */}
+        <div className="absolute top-0 inset-x-0 h-1 bg-white/[0.08] overflow-hidden">
+          <div
+            className="h-full transition-[width] duration-150 ease-linear"
+            style={{
+              width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%`,
+              backgroundColor: accentColor || '#10b981',
+            }}
+          />
+        </div>
+
+        {/* Track Thumbnail & Title */}
+        <div className="flex items-center gap-2.5 min-w-0 flex-1 pt-0.5">
           <img
             src={track.coverUrl}
             alt={track.title}
-            className="size-11 rounded-xl object-cover ring-1 ring-white/10 shrink-0"
+            className="size-11 rounded-xl object-cover ring-1 ring-white/10 shrink-0 shadow-md"
           />
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
-              <p className="truncate text-xs font-semibold text-white">{track.title}</p>
+              <p className="truncate text-xs font-semibold text-white tracking-tight">{track.title}</p>
               {isInstrumental && (
-                <span className="inline-block whitespace-nowrap rounded-full bg-amber-500/15 px-1.5 py-0.2 text-[0.6rem] font-mono text-amber-300 border border-amber-500/30 shrink-0">
+                <span className="inline-block whitespace-nowrap rounded-full bg-amber-500/15 px-1.5 py-0.2 text-[0.58rem] font-mono text-amber-300 border border-amber-500/30 shrink-0">
                   Inst.
                 </span>
               )}
             </div>
-            <p className="truncate text-[0.7rem] text-slate-400">{track.artist}</p>
+            <p className="truncate text-[0.7rem] text-slate-400 mt-0.5">{track.artist}</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 shrink-0" onClick={(e) => e.stopPropagation()}>
+        {/* Mobile Quick Action Buttons */}
+        <div className="flex items-center gap-1 shrink-0 pt-0.5" onClick={(e) => e.stopPropagation()}>
+          {/* Favorite Toggle */}
           <button
+            type="button"
+            onClick={() => toggleFavorite(track.id)}
+            className="p-2 text-slate-400 hover:text-white rounded-lg transition active:scale-125 cursor-pointer"
+            title={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+            aria-label="Toggle favorite"
+          >
+            <Heart
+              className={`size-4 transition-colors ${
+                isFavorite ? 'fill-rose-500 text-rose-500' : ''
+              }`}
+            />
+          </button>
+
+          {/* Queue Drawer */}
+          <button
+            type="button"
             onClick={() => setIsQueueOpen(!isQueueOpen)}
-            className="p-2 text-slate-400 hover:text-white rounded-lg transition cursor-pointer"
+            className={`p-2 rounded-lg transition cursor-pointer relative ${
+              isQueueOpen ? 'text-emerald-400 bg-emerald-500/15' : 'text-slate-400 hover:text-white'
+            }`}
             title="Queue"
+            aria-label="Open queue"
           >
             <ListMusic className="size-4" />
           </button>
+
+          {/* Play / Pause Toggle */}
           <button
+            type="button"
             onClick={onTogglePlay}
-            className="size-9 rounded-full flex items-center justify-center text-black bg-white hover:scale-105 active:scale-95 transition cursor-pointer"
+            className="size-9 rounded-full flex items-center justify-center text-black bg-white hover:scale-105 active:scale-95 transition shadow-md shadow-white/20 cursor-pointer"
             title={isPlaying ? 'Pause' : 'Play'}
+            aria-label={isPlaying ? 'Pause track' : 'Play track'}
           >
             {isPlaying ? <Pause className="size-4 fill-current" /> : <Play className="size-4 fill-current ml-0.5" />}
+          </button>
+
+          {/* Skip Next */}
+          <button
+            type="button"
+            onClick={onNext}
+            className="p-2 text-slate-300 hover:text-white rounded-lg transition active:scale-90 cursor-pointer"
+            title="Next Track"
+            aria-label="Skip to next track"
+          >
+            <SkipForward className="size-4" />
           </button>
         </div>
       </div>

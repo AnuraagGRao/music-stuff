@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { Search, X, AlertTriangle, Disc3, Heart, Cloud, LogIn, LogOut, Command, Zap } from 'lucide-react'
+import { Search, X, AlertTriangle, Disc3, Heart, Cloud, LogIn, LogOut, Command, Zap, Menu } from 'lucide-react'
 import { LyricsView } from './components/LyricsView'
 import { Player } from './components/Player'
 import { FullPlayer } from './components/FullPlayer'
@@ -71,6 +71,7 @@ function App() {
   const [sleepTimerOpen, setSleepTimerOpen] = useState(false)
   const [shortcutsOpen, setShortcutsOpen] = useState(false)
   const [upgradeOpen, setUpgradeOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const {
     currentTrack,
@@ -229,37 +230,50 @@ function App() {
             favoritesCount={favorites.length}
             uploadsCount={userTracks.length}
             onUpgradeClick={() => setUpgradeOpen(true)}
+            isOpenMobile={mobileMenuOpen}
+            onCloseMobile={() => setMobileMenuOpen(false)}
           />
 
           <main className="flex-1 space-y-4 min-w-0">
             {/* Header: Search + Nav Actions + Auth Pill */}
-            <header className="rounded-2xl border border-white/[0.08] bg-[#0c0d10]/90 backdrop-blur-xl p-3 sm:p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between shadow-xl shadow-black/40 z-40">
-              {/* Search input with pill styling */}
-              <div className="relative flex-1">
-                <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
-                <input
-                  className="w-full rounded-full border border-white/10 bg-[#141519] py-2.5 pl-10 pr-10 text-xs sm:text-sm text-[#ededef] outline-none placeholder:text-slate-500 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all"
-                  placeholder="Search 128+ tracks by title, artist, or album..."
-                  value={search}
-                  onChange={(event) => setSearch(event.target.value)}
-                />
-                {search && (
-                  <button
-                    onClick={() => setSearch('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-white rounded-full transition-colors cursor-pointer"
-                    title="Clear search"
-                  >
-                    <X className="size-3.5" />
-                  </button>
-                )}
+            <header className="rounded-2xl border border-white/[0.08] bg-[#0c0d10]/90 backdrop-blur-xl p-3 sm:p-4 flex flex-col gap-2.5 sm:gap-3 sm:flex-row sm:items-center sm:justify-between shadow-xl shadow-black/40 z-40">
+              {/* Search input with pill styling + Mobile Menu Trigger */}
+              <div className="flex items-center gap-2 flex-1 w-full">
+                <button
+                  type="button"
+                  onClick={() => setMobileMenuOpen(true)}
+                  className="lg:hidden p-2.5 rounded-full bg-white/[0.06] border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition cursor-pointer shrink-0"
+                  title="Open Navigation & Playlists"
+                  aria-label="Open navigation menu"
+                >
+                  <Menu className="size-4" />
+                </button>
+                <div className="relative flex-1">
+                  <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+                  <input
+                    className="w-full rounded-full border border-white/10 bg-[#141519] py-2.5 pl-10 pr-10 text-xs sm:text-sm text-[#ededef] outline-none placeholder:text-slate-500 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all"
+                    placeholder="Search 128+ tracks by title, artist, or album..."
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                  />
+                  {search && (
+                    <button
+                      onClick={() => setSearch('')}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-white rounded-full transition-colors cursor-pointer"
+                      title="Clear search"
+                    >
+                      <X className="size-3.5" />
+                    </button>
+                  )}
+                </div>
               </div>
 
               {/* Actions & User State */}
-              <div className="flex items-center gap-2 shrink-0 justify-between sm:justify-end">
+              <div className="flex items-center gap-2 shrink-0 justify-between sm:justify-end flex-wrap sm:flex-nowrap">
                 <ThemeSwitcher />
                 <a
                   href="https://anuraaggrao.com/"
-                  className="text-[0.72rem] font-mono uppercase tracking-wider text-slate-400 hover:text-white px-3 py-1.5 rounded-full border border-white/10 bg-[#141519] hover:bg-white/10 transition-colors"
+                  className="hidden sm:inline-flex text-[0.72rem] font-mono uppercase tracking-wider text-slate-400 hover:text-white px-3 py-1.5 rounded-full border border-white/10 bg-[#141519] hover:bg-white/10 transition-colors"
                   title="Back to portfolio"
                 >
                   Portfolio
@@ -268,11 +282,11 @@ function App() {
                 <button
                   type="button"
                   onClick={() => setShortcutsOpen(true)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] text-xs font-mono font-medium text-slate-400 hover:text-white transition cursor-pointer"
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] text-xs font-mono font-medium text-slate-400 hover:text-white transition cursor-pointer"
                   title="Keyboard Shortcuts (?)"
                 >
                   <Command className="size-3.5" />
-                  <span className="hidden sm:inline">Shortcuts</span>
+                  <span className="hidden md:inline">Shortcuts</span>
                 </button>
 
                 {/* Storage Plan Pill */}
