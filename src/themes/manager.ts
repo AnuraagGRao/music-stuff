@@ -1,3 +1,6 @@
+import { obsidianTheme, obsidianCss } from './obsidian'
+import { cyberTheme, cyberCss } from './cyber'
+import { arcadeTheme, arcadeCss } from './arcade'
 import { retroArcadeTheme, retroArcadeCss } from './retroArcade'
 import { defaultTheme, defaultCss } from './default'
 import { playniteModernTheme, playniteModernCss } from './playniteModern'
@@ -12,6 +15,18 @@ import type { Theme } from './types'
  */
 
 const themeRegistry: Record<string, { theme: Theme; css: string }> = {
+  'obsidian': {
+    theme: obsidianTheme,
+    css: obsidianCss,
+  },
+  'cyber': {
+    theme: cyberTheme,
+    css: cyberCss,
+  },
+  'arcade': {
+    theme: arcadeTheme,
+    css: arcadeCss,
+  },
   'retro-arcade': {
     theme: retroArcadeTheme,
     css: retroArcadeCss,
@@ -39,10 +54,10 @@ const themeRegistry: Record<string, { theme: Theme; css: string }> = {
 }
 
 export class ThemeManager {
-  private currentTheme: string = 'retro-arcade'
+  private currentTheme: string = 'obsidian'
   private styleElement: HTMLStyleElement | null = null
 
-  constructor(initialTheme: string = 'retro-arcade') {
+  constructor(initialTheme: string = 'obsidian') {
     this.currentTheme = initialTheme
     this.init()
   }
@@ -51,8 +66,8 @@ export class ThemeManager {
    * Initialize theme system
    */
   private init(): void {
-    // Load saved theme preference
-    const saved = localStorage.getItem('app-theme')
+    // Load saved theme preference (supports user-theme and app-theme)
+    const saved = localStorage.getItem('user-theme') || localStorage.getItem('app-theme')
     if (saved && themeRegistry[saved]) {
       this.currentTheme = saved
     }
@@ -71,6 +86,7 @@ export class ThemeManager {
     }
 
     this.currentTheme = themeId
+    localStorage.setItem('user-theme', themeId)
     localStorage.setItem('app-theme', themeId)
     document.documentElement.setAttribute('data-theme', themeId)
     this.injectStyles()

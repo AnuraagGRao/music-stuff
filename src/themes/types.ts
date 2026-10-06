@@ -35,4 +35,4 @@ export interface Theme {
   cssVariables: Record<string, string>
 }
 
-export type ThemeId = 'retro-arcade' | 'default' | 'playnite-modern' | 'es-de-wheel' | 'big-picture-grid' | 'neon-arcade-amoled'
+export type ThemeId = 'obsidian' | 'cyber' | 'arcade' | 'retro-arcade' | 'default' | 'playnite-modern' | 'es-de-wheel' | 'big-picture-grid' | 'neon-arcade-amoled'

@@ -15,12 +15,15 @@ export function ThemeSwitcher() {
   
   const getEmoji = (themeId: string) => {
     switch (themeId) {
-      case 'retro-arcade': return '🕹️'
+      case 'obsidian': return '🖤'
+      case 'cyber': return '⚡'
+      case 'arcade': return '🕹️'
+      case 'retro-arcade': return '👾'
       case 'default': return '🌙'
       case 'playnite-modern': return '🎮'
       case 'es-de-wheel': return '🎡'
       case 'big-picture-grid': return '📺'
-      case 'neon-arcade-amoled': return '⚡'
+      case 'neon-arcade-amoled': return '✨'
       default: return '🎵'
     }
   }
