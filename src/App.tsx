@@ -293,11 +293,10 @@ function App() {
                 <button
                   type="button"
                   onClick={() => setUpgradeOpen(true)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer ${
-                    userPlan === 'pro'
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer ${userPlan === 'pro'
                       ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 shadow-sm shadow-emerald-500/20 font-semibold'
                       : 'bg-white/[0.04] border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10'
-                  }`}
+                    }`}
                   title="Aura Cloud Subscription & Storage Quota"
                 >
                   <Zap className="size-3.5 text-emerald-400 fill-emerald-400" />
@@ -398,7 +397,7 @@ function App() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-white/[0.06]">
                   <div>
                     <span className="text-[0.65rem] font-bold tracking-[0.16em] uppercase text-emerald-400 font-mono block">
-                      01 · Catalog
+                      Catalog
                     </span>
                     <h2 className="text-xl font-bold text-white tracking-tight mt-0.5">
                       Music Library
@@ -412,11 +411,10 @@ function App() {
                         setActiveFilter('all')
                         setActiveNav('library')
                       }}
-                      className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer ${
-                        activeFilter === 'all'
+                      className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer ${activeFilter === 'all'
                           ? 'bg-emerald-500 text-black font-bold shadow-sm shadow-emerald-500/20'
                           : 'bg-white/[0.06] text-slate-400 hover:text-white hover:bg-white/10 border border-white/[0.08]'
-                      }`}
+                        }`}
                     >
                       All ({tracks.length})
                     </button>
@@ -425,11 +423,10 @@ function App() {
                         setActiveFilter('favorites')
                         setActiveNav('favorites')
                       }}
-                      className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer flex items-center gap-1 ${
-                        activeFilter === 'favorites'
+                      className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer flex items-center gap-1 ${activeFilter === 'favorites'
                           ? 'bg-rose-500 text-white font-bold shadow-sm shadow-rose-500/20'
                           : 'bg-white/[0.06] text-slate-400 hover:text-white hover:bg-white/10 border border-white/[0.08]'
-                      }`}
+                        }`}
                     >
                       <Heart className="size-3 fill-current" />
                       <span>Favs ({favorites.length})</span>
@@ -439,22 +436,20 @@ function App() {
                         setActiveFilter('uploads')
                         setActiveNav('uploads')
                       }}
-                      className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer flex items-center gap-1 ${
-                        activeFilter === 'uploads'
+                      className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer flex items-center gap-1 ${activeFilter === 'uploads'
                           ? 'bg-indigo-500 text-white font-bold shadow-sm shadow-indigo-500/20'
                           : 'bg-white/[0.06] text-slate-400 hover:text-white hover:bg-white/10 border border-white/[0.08]'
-                      }`}
+                        }`}
                     >
                       <Cloud className="size-3" />
                       <span>Uploads ({userTracks.length})</span>
                     </button>
                     <button
                       onClick={() => setActiveFilter(activeFilter === 'instrumental' ? 'all' : 'instrumental')}
-                      className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer ${
-                        activeFilter === 'instrumental'
+                      className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium transition cursor-pointer ${activeFilter === 'instrumental'
                           ? 'bg-amber-500 text-black font-bold shadow-sm shadow-amber-500/20'
                           : 'bg-white/[0.06] text-slate-400 hover:text-white hover:bg-white/10 border border-white/[0.08]'
-                      }`}
+                        }`}
                     >
                       Instrumental
                     </button>
