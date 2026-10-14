@@ -14,6 +14,8 @@ import { ForYou } from './components/ForYou'
 import { CreatePlaylistModal } from './components/CreatePlaylistModal'
 import { UpgradeModal } from './components/UpgradeModal'
 import { ThemeSwitcher } from './components/ThemeSwitcher'
+import { SonicStage } from './components/SonicStage'
+import { KaiBeacon } from './components/KaiBeacon'
 import { useAudioPlayer } from './hooks/useAudioPlayer'
 import { useFirebaseMusic } from './hooks/useFirebaseMusic'
 import { useAudioStore } from './store/audioStore'
@@ -210,10 +212,16 @@ function App() {
 
     return (
       <div
-        className="min-h-screen bg-[#07080a] text-[#ECEDEE] selection:bg-emerald-500/30 selection:text-emerald-200"
+        className="min-h-screen bg-[#07080a] text-[#ECEDEE] selection:bg-emerald-500/30 selection:text-emerald-200 relative overflow-x-hidden"
         data-theme={theme}
       >
-        <div className="mx-auto flex max-w-7xl gap-4 p-3 pb-28 lg:p-6 lg:pb-32">
+        {/* 3D WebGL Spatial Audio Stage */}
+        <SonicStage isPlaying={isPlaying} />
+
+        {/* Kai the Kitsune DJ Companion Beacon */}
+        <KaiBeacon isPlaying={isPlaying} />
+
+        <div className="relative z-10 mx-auto flex max-w-7xl gap-4 p-3 pb-28 lg:p-6 lg:pb-32">
           {/* Sidebar */}
           <Sidebar
             onCreatePlaylistClick={() => setCreatePlaylistOpen(true)}

@@ -15,12 +15,14 @@
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.19",
     "@radix-ui/react-slider": "^1.4.3",
+    "@types/three": "^0.186.0",
     "clsx": "^2.1.1",
     "fast-average-color": "^9.5.2",
     "firebase": "^12.16.0",
     "lucide-react": "^1.24.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
+    "three": "^0.186.1",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
