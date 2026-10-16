@@ -260,7 +260,9 @@ function App() {
                   <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
                   <input
                     className="w-full rounded-full border border-white/10 bg-[#141519] py-2.5 pl-10 pr-10 text-xs sm:text-sm text-[#ededef] outline-none placeholder:text-slate-500 focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all"
-                    placeholder="Search 128+ tracks by title, artist, or album..."
+                    placeholder={tracks.length > 0 ? `Search ${tracks.length} tracks...` : "Search tracks..."}
+                    title={tracks.length > 0 ? `Search ${tracks.length} tracks by title, artist, or album` : "Search tracks"}
+                    aria-label={tracks.length > 0 ? `Search ${tracks.length} tracks by title, artist, or album` : "Search tracks"}
                     value={search}
                     onChange={(event) => setSearch(event.target.value)}
                   />
