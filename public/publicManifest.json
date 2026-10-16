@@ -3432,6 +3432,74 @@
           "text": "Structure the spirit, control the home, lay her by lay her, rising in line. Zero margin for the design, foundation set, zenith insight, weight of the stone, in the dead of the night, solid, final, built, no lyrics."
         }
       ]
+    },
+    {
+      "isPublic": true,
+      "id": "129",
+      "upvotesCount": 0,
+      "audioUrl": "/audio/mp3/Midnight_at_the_Bamboo_Gate.mp3",
+      "coverUrl": "/audio/thumbnails/Midnight_at_the_Bamboo_Gate.jpg",
+      "title": "Midnight at the Bamboo Gate",
+      "album": "Companion Protocol OST",
+      "ownerId": "public",
+      "duration": 167,
+      "downvotesCount": 0,
+      "lyricsStatus": "completed",
+      "isInstrumental": true,
+      "netScore": 0,
+      "artist": "Anuraag Rao",
+      "lyrics": []
+    },
+    {
+      "isPublic": true,
+      "id": "130",
+      "upvotesCount": 0,
+      "audioUrl": "/audio/mp3/Turbo_Arcade_Runner.mp3",
+      "coverUrl": "/audio/thumbnails/Turbo_Arcade_Runner.jpg",
+      "title": "Turbo Arcade Runner",
+      "album": "Companion Protocol OST",
+      "ownerId": "public",
+      "duration": 184,
+      "downvotesCount": 0,
+      "lyricsStatus": "completed",
+      "isInstrumental": true,
+      "netScore": 0,
+      "artist": "Anuraag Rao",
+      "lyrics": []
+    },
+    {
+      "isPublic": true,
+      "id": "131",
+      "upvotesCount": 0,
+      "audioUrl": "/audio/mp3/Hardline_Extraction.mp3",
+      "coverUrl": "/audio/thumbnails/Hardline_Extraction.jpg",
+      "title": "Hardline Extraction",
+      "album": "Companion Protocol OST",
+      "ownerId": "public",
+      "duration": 181,
+      "downvotesCount": 0,
+      "lyricsStatus": "completed",
+      "isInstrumental": true,
+      "netScore": 0,
+      "artist": "Anuraag Rao",
+      "lyrics": []
+    },
+    {
+      "isPublic": true,
+      "id": "132",
+      "upvotesCount": 0,
+      "audioUrl": "/audio/mp3/Orbiting_the_Pale_Star.mp3",
+      "coverUrl": "/audio/thumbnails/Orbiting_the_Pale_Star.jpg",
+      "title": "Orbiting the Pale Star",
+      "album": "Orbital Gravity OST",
+      "ownerId": "public",
+      "duration": 170,
+      "downvotesCount": 0,
+      "lyricsStatus": "completed",
+      "isInstrumental": true,
+      "netScore": 0,
+      "artist": "Anuraag Rao",
+      "lyrics": []
     }
   ]
 }
