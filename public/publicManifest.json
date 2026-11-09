@@ -1227,9 +1227,9 @@
       "isPublic": true,
       "id": "47",
       "upvotesCount": 0,
-      "audioUrl": "/audio/mp3/Leo’s_Crown.mp3",
-      "coverUrl": "/audio/thumbnails/Leo’s_Crown.jpg",
-      "title": "Leo’s Crown",
+      "audioUrl": "/audio/mp3/Leo\u2019s_Crown.mp3",
+      "coverUrl": "/audio/thumbnails/Leo\u2019s_Crown.jpg",
+      "title": "Leo\u2019s Crown",
       "album": "Tetra Overflow Ultra",
       "ownerId": "public",
       "duration": 175,
@@ -1318,7 +1318,7 @@
         },
         {
           "time": 127,
-          "text": "Rising through the city of life fazendo тебя Lightness surfing Brockless raises the air as thin The flow begins Sand-a-three"
+          "text": "Rising through the city of life fazendo \u0442\u0435\u0431\u044f Lightness surfing Brockless raises the air as thin The flow begins Sand-a-three"
         }
       ]
     },
@@ -1924,7 +1924,7 @@
       "lyrics": [
         {
           "time": 0,
-          "text": "Did you choose a movie for the şimdi? I'm afraid. Yes. No. Virgo. Me."
+          "text": "Did you choose a movie for the \u015fimdi? I'm afraid. Yes. No. Virgo. Me."
         },
         {
           "time": 7,
@@ -2314,9 +2314,9 @@
       "isPublic": true,
       "id": "84",
       "upvotesCount": 0,
-      "audioUrl": "/audio/mp3/The_Archer’s_Aim.mp3",
-      "coverUrl": "/audio/thumbnails/The_Archer’s_Aim.jpg",
-      "title": "The Archer’s Aim",
+      "audioUrl": "/audio/mp3/The_Archer\u2019s_Aim.mp3",
+      "coverUrl": "/audio/thumbnails/The_Archer\u2019s_Aim.jpg",
+      "title": "The Archer\u2019s Aim",
       "album": "Tetra Overflow Ultra",
       "ownerId": "public",
       "duration": 178,
@@ -2906,7 +2906,7 @@
       "lyrics": [
         {
           "time": 15,
-          "text": "[♪ OUTRO MUSIC PLAYING..."
+          "text": "[\u266a OUTRO MUSIC PLAYING..."
         }
       ]
     },
@@ -3494,6 +3494,57 @@
       "album": "Orbital Gravity OST",
       "ownerId": "public",
       "duration": 170,
+      "downvotesCount": 0,
+      "lyricsStatus": "completed",
+      "isInstrumental": true,
+      "netScore": 0,
+      "artist": "Anuraag Rao",
+      "lyrics": []
+    },
+    {
+      "isPublic": true,
+      "id": "133",
+      "upvotesCount": 0,
+      "audioUrl": "/audio/mp3/Asfalto_Queima.mp3",
+      "coverUrl": "/audio/thumbnails/Asfalto_Queima.jpg",
+      "title": "Asfalto Queima",
+      "album": "Valorant Phonk Singles",
+      "ownerId": "public",
+      "duration": 173,
+      "downvotesCount": 0,
+      "lyricsStatus": "completed",
+      "isInstrumental": true,
+      "netScore": 0,
+      "artist": "Anuraag Rao",
+      "lyrics": []
+    },
+    {
+      "isPublic": true,
+      "id": "134",
+      "upvotesCount": 0,
+      "audioUrl": "/audio/mp3/Asfalto_Quente.mp3",
+      "coverUrl": "/audio/thumbnails/Asfalto_Quente.jpg",
+      "title": "Asfalto Quente",
+      "album": "Valorant Phonk Singles",
+      "ownerId": "public",
+      "duration": 66,
+      "downvotesCount": 0,
+      "lyricsStatus": "completed",
+      "isInstrumental": true,
+      "netScore": 0,
+      "artist": "Anuraag Rao",
+      "lyrics": []
+    },
+    {
+      "isPublic": true,
+      "id": "135",
+      "upvotesCount": 0,
+      "audioUrl": "/audio/mp3/The_Sudden_Trip_Downstairs.mp3",
+      "coverUrl": "/audio/thumbnails/The_Sudden_Trip_Downstairs.jpg",
+      "title": "The Sudden Trip Downstairs",
+      "album": "Corrode Comedy OST",
+      "ownerId": "public",
+      "duration": 62,
       "downvotesCount": 0,
       "lyricsStatus": "completed",
       "isInstrumental": true,
